@@ -1,0 +1,17 @@
+textarea {
+	border: 1px solid #700000;
+	width: 73% !important;
+	padding: 5px !important;
+	background-color: rgba(120,0,0,0.15);
+}
+fieldset { overflow: hidden !important; }
+input { 
+	border: 1px solid #700000 !important;
+	width: 73% !important;
+	padding: 5px !important;
+	background: none !important;
+	background-color: rgba(120,0,0,0.15);
+}
+.button_to {
+	width: auto !important;
+}

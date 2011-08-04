@@ -1,0 +1,2 @@
+class PagePhotoController < ApplicationController
+end

@@ -1,0 +1,18 @@
+<li class="comment" data-comment-id="<%= comment.id %>">
+	<div class="comment_user_picture">		
+		<%= user_avatar :user => comment.user, :size => :small, :resize => "32px" %>
+		<% if 1==0 %>
+			<% if current_user?(comment.user) or current_user?(comment.commentable.user) %>
+				<%= button_to "", comment_path(comment), 
+				        :method => :delete,
+						:remote => true,
+						:class => "rfloat destroyIcon destroy"%>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="comment_body">
+		<%= link_to comment.user.name, user_path(comment.user) %><br/>
+		<%= comment.body %><br/>
+		<span class="timeAgo"><%= comment.created_at.strftime("%A at %H:%M") %></span>
+	</div>
+</li>

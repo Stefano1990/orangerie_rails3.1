@@ -1,0 +1,67 @@
+#nav {
+	width: 100%;
+	float: left;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-bottom: 1px solid #8a0302;
+}
+#nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#nav li {
+	float: left;
+}
+#nav li a {
+	display: block;
+}
+#nav li a:hover {
+}
+.TopLevel {
+}
+.TopLevel a {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 20px;
+	height: 39px;
+}
+.TopLevel:hover {
+	background: url('/images/ui/navi/hightlight.png') repeat-x;
+}
+.SubNav {
+	position: absolute;
+	display: block;
+	visibility: hidden;
+	z-index: 1;
+}
+#nav li:hover .SubNav {
+	visibility: visible;
+	
+}
+.SubNav li {
+	margin: 1px 0 0 -1px;
+}
+.SubNav li a {
+	padding: 10px 10px 10px 10px;
+	margin: 0;
+	height: 20px;
+	background-color: #730200;
+}
+.SubNav li a:hover {
+	background: url('/images/ui/navi/hightlight_inverted2.png') repeat-x;
+}
+.NavDivider {
+	width: 1px;
+	height: 59px;
+	background-image: url('/images/ui/navi/border.png');
+}
+.SubNavDivider {
+	width: 1px;
+	height: 30px;
+	background-image: url('/images/ui/navi/border_inverted.png');
+}
+/* for the user navi on the right. */
+#right-user-navi { float: right; height: 59px; }
+#right-user-navi a { vertical-align: top; }

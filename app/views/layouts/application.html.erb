@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+	<%= stylesheet_link_tag 'application' %>
+	<%= javascript_include_tag 'application' %>
+
+  	<%= csrf_meta_tag %>
+  	<%= yield :head %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+	<div id="big_bg">
+		<div id="container">
+				<%= render 'layouts/header' %>
+				<div id="wrapper">
+					<div id="large-box">
+						<% flash.each do |name, msg| %>
+						    <div class="<%= name %>"><%= msg %></div>
+					    <% end %>
+						<%= yield %>
+					</div>
+					<div id="right-box">
+						<%= yield :rightBar %>
+						<%= render 'right_bar/events' %>
+					</div>
+				</div>
+		</div>
+	</div>
+  </body>
+</html>

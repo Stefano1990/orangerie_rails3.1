@@ -1,0 +1,7 @@
+<%= link_to "Back to editing the page", edit_admin_page_path(@page_photo.page) %>
+<%= semantic_form_for(@page_photo, :url => admin_page_page_photos_path(@page_photo.page), :html => { :multipart => true }) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :image, :as => :file %>
+		<%= f.commit_button 'Submit', :disable_with => "Uploading..." %>
+	<% end %>		
+<% end %>

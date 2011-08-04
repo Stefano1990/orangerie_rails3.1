@@ -1,0 +1,134 @@
+<%= semantic_form_for(@user, :html => {:method => :put, :id => "edit_user_infos"}) do |g| %>
+	<%= g.inputs :name => 'infos', :for => :infos do |f|%>
+	<%= f.inputs :id => "basic" do %>
+      	<%= f.input :sex, :as => :select, :collection => [t('general.sex.couple').capitalize, t('general.sex.male').capitalize, t('general.sex.female').capitalize], 
+												  :include_blank => false %>
+    <% end %>
+	<%= f.inputs :id => "form-female",  do %>
+	<h4><%= t('general.her') %>:</h4>
+		<%= f.input :age_f, :label => t('users.infos.age') %>
+		<%= f.input :height_f, :label => t('users.infos.age') %>
+		<%= f.input :weight_f %>
+		<%= f.input :hair_color_f %>
+		<%= f.input :eye_color_f %>
+		<%= f.input :appearance_f %>
+		<%= f.input :smoking_f, :as => :select, 
+					:collection => ["Nein", "Ja"], :include_blank => false %>
+		<%= f.input :bi_tendency_f %>
+		<%= f.input :sex_tend_f %>
+	<% end %>
+	
+	<%= f.inputs :id => "form-male",  do %>
+	<h4><%= t('general.him') %>:</h4>
+		<%= f.input :age_m, :label => t('users.infos.age') %>
+		<%= f.input :height_m, :label => t('users.infos.height') %>
+		<%= f.input :weight_m, :label => t('users.infos.weight') %>
+		<%= f.input :hair_color_m, :label => t('users.infos.hair-color') %>
+		<%= f.input :eye_color_m, :label => t('users.infos.eye-color') %>
+		<%= f.input :appearance_m, :label => t('users.infos.appearance') %>
+		<%= f.input :smoking_m, :as => :select, 
+					:collection => [t('general.yees'), t('general.noo')], :include_blank => false %>
+		<%= f.input :bi_tendency_m, :label => t('users.infos.bi-tendency') %>
+		<%= f.input :sex_tend_m, :label => t('users.infos.sex-tendency'),  %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+	
+	<%= f.inputs :id => "form-common" do %>
+      	<div><%= f.input :about_us, :label => t('users.show.infos.about_us', :count => count(@user.infos.sex)) %></div>
+		<%= f.input :region, :label => t('users.infos.region') %>
+		<%= f.input :mobility, :label => t('users.infos.mobility') %>
+		<div><%= f.input :looking_for, :label => t('users.infos.categories.looking_for', :count => count(@user.infos.sex)), :size => "30"%></div>
+		<div><%= f.input :dislike, :label => t('users.infos.categories.dislikes', :count => count(@user.infos.sex)) %></div>
+		<div><%= f.input :like, :label => t('users.infos.categories.likes', :count => count(@user.infos.sex))%></div>
+		<div><%= f.input :to_do, :label => t('users.infos.categories.to-do') %></div>
+    <% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+	<% end %>
+<% end %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow features for the textareas
+		$('#user_infos_attributes_about_us').autogrow();
+		$('#user_infos_attributes_looking_for').autogrow();
+		$('#user_infos_attributes_dislike').autogrow();
+		$('#user_infos_attributes_like').autogrow();
+		$('#user_infos_attributes_to_do').autogrow();
+		
+		// word count for the textareas
+		// the max characters is the same for all of them.
+		var options = { maxCharacterSize: 400 };
+		$('#user_infos_attributes_about_us').textareaCount(options);
+		$('#user_infos_attributes_looking_for').textareaCount(options);
+		$('#user_infos_attributes_dislike').textareaCount(options);
+		$('#user_infos_attributes_like').textareaCount(options);
+		$('#user_infos_attributes_to_do').textareaCount(options);
+		
+		
+		// javascript to show/hide the forms depending on gender.
+		// the ruby in in place so that the system works for different localizations.
+		$('#form-female').hide();
+		$('#form-male').hide();
+		
+		if ($("#user_infos_attributes_sex :selected").text() == "<%= t('general.sex.male').capitalize %>") {
+			$('#form-male').fadeIn('slow');
+		}
+		if ($("#user_infos_attributes_sex :selected").text() == "<%= t('general.sex.female').capitalize %>") {
+			$('#form-female').fadeIn('slow');
+		}
+		
+		if ($("#user_infos_attributes_sex :selected").text() == "<%= t('general.sex.couple').capitalize %>") {
+			$('#form-female').fadeIn('slow'); 
+			$('#form-male').fadeIn('slow');
+		}
+		
+	       $("#user_infos_attributes_sex").change(function(){
+
+			if ($(this).val() == "<%= t('general.sex.female').capitalize %>") {
+				$('#form-female').fadeIn();
+				$('#user_infos_attributes_about_us_input label').
+									text('<%= t('users.show.infos.about_us', :count => 1) %>');
+				$('#user_infos_attributes_looking_for_input label').
+									text('<%= t('users.infos.categories.looking_for', :count => 1) %>');
+				$('#user_infos_attributes_dislike_input label').
+									text('<%= t('users.infos.categories.dislikes', :count => 1) %>');
+				$('#user_infos_attributes_like_input label').
+									text('<%= t('users.infos.categories.likes', :count => 1) %>');
+			}else{
+				$('#form-female').hide();
+			}
+			if ($(this).val() == "<%= t('general.sex.male').capitalize %>") { 
+				$('#form-male').fadeIn();
+				$('#form-female').fadeIn();
+				$('#user_infos_attributes_about_us_input label').
+									text('<%= t('users.show.infos.about_us', :count => 1) %>');
+				$('#user_infos_attributes_looking_for_input label').
+									text('<%= t('users.infos.categories.looking_for', :count => 1) %>');
+				$('#user_infos_attributes_dislike_input label').
+									text('<%= t('users.infos.categories.dislikes', :count => 1) %>');
+				$('#user_infos_attributes_like_input label').
+									text('<%= t('users.infos.categories.likes', :count => 1) %>');
+			}else{
+				$('#form-male').hide();
+			}
+			if ($(this).val() == "<%= t('general.sex.couple').capitalize %>") {
+				$('#form-female').fadeIn(); 
+				$('#form-male').fadeIn();
+				$('#user_infos_attributes_about_us_input label').
+									text('<%= t('users.show.infos.about_us', :count => 2) %>');
+				$('#user_infos_attributes_looking_for_input label').
+									text('<%= t('users.infos.categories.looking_for', :count => 2) %>');
+				$('#user_infos_attributes_dislike_input label').
+									text('<%= t('users.infos.categories.dislikes', :count => 2) %>');
+				$('#user_infos_attributes_like_input label').
+									text('<%= t('users.infos.categories.likes', :count => 2) %>');
+				
+			}		
+	      });
+
+	    });
+	
+</script>

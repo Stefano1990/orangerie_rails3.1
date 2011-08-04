@@ -1,0 +1,15 @@
+<% @categories.each do |cat| %>
+	<tr>
+		<td><%= cat.position %></td>
+		<td><%= link_to cat.name, edit_admin_category_path(cat) %></td>
+		<td><%= button_to "Move up", move_up_admin_category_path(cat), 
+				:method => :put,
+				:id => "move_up" %></td>
+		<td><%= button_to "Move down", move_down_admin_category_path(cat), 
+				:method => :put, 
+				:id => "move_down" %></td>
+		<td><%= button_to "DELETE", admin_category_path(cat), :method => :delete, 
+				:class => "destroy",
+				:id => "destroy_link" %></td>
+	</tr>
+<% end %>

@@ -1,0 +1,19 @@
+<li class="post" data-id="<%= item.id %>">
+	<div class="post_user_picture">
+		<%= user_avatar :user => item.user, :size => :small, :resize => "50px" %>
+	</div>
+	<div class="post_body">
+		<% if item.commentable.class.to_s == "Event" %>
+			<%= link_to item.user.name, item.user %> commented on an
+			<%= link_to "#{item.commentable.class.to_s}", item.commentable %><br/>
+			<%= simple_format item.body %>
+		<% else %>
+			<%= link_to item.user.name, item.user %> commented on 
+			<%= current_user?(item.commentable.user) ? "your" : 
+					link_to("#{item.commentable.user.name}'s", item.commentable.user) %>
+			<%= link_to "#{item.commentable.class.to_s}", item.commentable %><br/>
+			<%= simple_format item.body %> 
+		<% end %>
+		<span class="timeAgo"><%= distance_of_time_in_words_to_now(item.created_at) %> ago</span> &middot; 
+	</div>
+</li>

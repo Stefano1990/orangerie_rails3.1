@@ -1,0 +1,7 @@
+<%= semantic_form_for(@photo, :url => user_photos_path(@user), :html => { :multipart => true }) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :album, :include_blank => false, :collection => @user.albums %>
+		<%= f.input :image, :as => :file %>
+		<%= f.commit_button 'Submit', :disable_with => "Uploading..." %>
+	<% end %>		
+<% end %>

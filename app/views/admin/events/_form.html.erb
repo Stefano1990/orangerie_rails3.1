@@ -1,0 +1,18 @@
+<%= semantic_form_for ([:admin, @event]) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :title, :label => 'Title' %>
+		<%= f.input :series, :label => 'Part of the series', :include_blank => false %>
+		<%= f.input :short_description, :label => 'Short description' %>
+		<%= f.input :long_description, :label => 'Long description' %>
+		<%= f.input :date %>
+		<%= f.input :price_male %>
+		<%= f.input :price_female %>
+		<%= f.input :price_couple %>
+		<%= f.input :discount %>
+		<%= f.input :is_review %>
+		<%= f.input :has_comments %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<% if @conversations.empty? %>
+	No messages (yet!)
+<% else %>
+	<ol class="messages">
+		<%= render @conversations %>
+	</ol>
+<% end %>

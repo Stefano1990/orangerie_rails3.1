@@ -1,0 +1,33 @@
+<table id="categories">
+	<tr>
+		<td>Page position</td>
+		<td>Page title</td>
+		<td>Move page up</td>
+		<td>Move page down</td>
+		<td>Delete Page</td>
+	</tr>
+	<%= render :partial => "list" %>
+</table>
+<div>
+	Make a new category:
+	<%= semantic_form_for([:admin, Category.new], :html => {:method => :post}) do |f| %>
+		<%= f.inputs do %>
+			<%= f.input :position, :label => 'Position' %>
+			<%= f.input :name, :label => 'Name' %>
+		<% end %>
+		<%= f.buttons do %>
+			<%= f.commit_button 'Submit' %>
+		<% end %>
+	<% end %>
+</div>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+	$('.button_to').submitWithAjax();
+	$("#destroy_link").click(function() {
+		if (confirm('Are you sure?')) {
+		}else{
+			return false;
+		}
+	});
+});
+</script>

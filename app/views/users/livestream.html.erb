@@ -1,0 +1,7 @@
+<%= render 'posts/new' %>
+<ol class="posts">
+	<% @livestream.each do |stream_item| %>
+		<%= render "livestream/#{stream_item.activity.item.class.to_s.downcase}", :item => stream_item.activity.item %>
+	<% end %>
+</ol>
+<a href="#" data-offset="<%= @offset %>" data-user_id="<%= current_user.id %>" id="load_more">Load more...</a>

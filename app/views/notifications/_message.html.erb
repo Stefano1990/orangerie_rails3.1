@@ -1,0 +1,4 @@
+<li data-id="<%= item.id %>" data-created_at="<%= item.created_at %>">
+	<%= user_image_link :user => item.sender, :size => :small, :resize => "20px" %>
+	<%= link_to item.sender.name, item.sender %> sent you a <%= link_to "message", reply_message_path(item)%>.
+</li>

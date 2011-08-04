@@ -1,0 +1,11 @@
+<% if !params.nil? %>
+	<% unless @comments.nil? %>
+		<%= render @comments %>
+	<% end %>
+<% end %>
+<div>
+	<%= render :partial => 'flagged_comments', :locals => { :flagged_comments => @flagged_comments } %>
+</div>
+<div>
+	<%= render :partial => '/admin/search_form', :locals => { :search_type => "Comments" } %>
+</div>

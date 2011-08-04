@@ -1,0 +1,10 @@
+<% @user.albums.each do |album| %>
+	<p><%= album.title %></p>
+	<%= album.description %>
+<% end %>
+
+<% @photo = Photo.last %>
+<%= image_tag @photo.image.url %>
+<p>
+	<%= link_to "upload photo", new_user_photo_path(@user) %>
+</p>

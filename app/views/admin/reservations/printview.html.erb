@@ -1,0 +1,3 @@
+<h1>Guestlist for: <%= @event.title %></h1>
+<h2>Time of print: <%= Time.now.strftime("%A %d.%m.%y, %H:%M") %></h2>
+<%= render :partial => 'guestlist' %>

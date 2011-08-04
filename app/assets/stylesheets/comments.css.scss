@@ -1,0 +1,62 @@
+// This file contains all the styles that have something to do with the comment MODEL.
+// This was done to unify the styling for the comments on the different pages.
+// Virtually every model can have comments through :commentable.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.comments_list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	overflow: hidden;
+	float: left;
+	width: 375px;
+	
+	.comment {
+		padding: 0;
+		margin: 0 0 5px 0;
+		background-color: rgba(120,0,0,0.15);
+		vertical-align: top;
+		overflow: inherit;
+		float: inherit;
+		width: 100%;
+		.comment_user_picture {
+			margin: 5px;
+			padding: 0;
+			float: left;
+		}
+		.comment_body {
+			margin-left: 45px;
+			padding-right: 5px;
+		}
+	}
+}
+// The form to make a new comment.
+div.new-comment {
+	height: auto;
+	width: 100%;
+	overflow: hidden;
+	.comment_user_picture {
+		margin: 5px;
+		padding: 0;
+		float: left;
+	}
+	#new_comment {
+		margin-top: 5px;
+		margin-bottom: 0px;
+		width: 330px;
+		float: left;
+		background: none;
+		textarea {
+			margin-left: 5px;
+			width: 315px;
+			height: 48px;
+			padding: 3px;
+		}
+		.small {
+			float: right;
+			font-size: 90%;
+			margin-top: -5px;
+			margin-right: 5px;
+		}
+	}
+}

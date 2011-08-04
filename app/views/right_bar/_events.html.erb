@@ -1,0 +1,26 @@
+<h3>Upcoming events</h3>
+<ol>
+	<% Event.upcoming.limit(3).each do |event| %>
+		<li>
+			<%= image_tag(PagePhoto.last.image, :width => "50px")%>
+			<h4><%= link_to event.title, event_path(event) %></h4><br/>
+			<%= link_to truncate(event.short_description, :length => 100, :separator => ' '), event_path(event) %>
+			<%= "(#{event.friends_coming(current_user).count} friends coming)" if signed_in? %>
+		</li>
+	<% end %>
+</ol>
+<% if signed_in? %>
+	<h3>Your next events</h3>
+	<% unless Reservation.upcoming(current_user).empty? %>
+		<ol>
+			<% Reservation.upcoming(current_user).limit(3).each do |reservation| %>
+				<li>
+					<%= image_tag(PagePhoto.last.image, :width => "50px")%>
+					<h4><%= link_to reservation.event.title, event_path(reservation.event) %></h4><br/>
+					<%= link_to truncate(reservation.event.short_description, :length => 100, :separator => ' '), event_path(reservation.event) %>
+					<small>In <%= distance_of_time_in_words_to_now(reservation.event.date) %></small>
+				</li>
+			<% end %>
+		</ol>
+	<% end %>
+<% end %>

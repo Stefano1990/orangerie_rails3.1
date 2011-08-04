@@ -1,0 +1,20 @@
+<% content_for :sub_page_navi do %>
+	<ul class="noDeco profileNavigation">
+		<li><%= link_to "Show comments", admin_comments_path(:commentable_type => @event.class.to_s, :commentable_id => @event.id) %></li>
+		<li><%= link_to "Upload new photo", new_admin_event_event_photo_path(@event) %></li>
+		<li><%= link_to "Show photos", admin_event_event_photos_path(@event) %></li>
+	</ul>
+<% end %>
+<%= render :partial => 'form' %>
+
+<h3>Photos on this page:</h3>
+<% @event.event_photos.limit(2).each do |photo| %>
+	<%= image_tag(photo.image)%>
+<% end %>
+<h3></h3>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#event_short_description").autogrow();
+		$("#event_long_description").autogrow();
+	});
+</script>

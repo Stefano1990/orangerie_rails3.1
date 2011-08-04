@@ -1,0 +1,10 @@
+<a href="#" class="show_description" data-id="<%= event.id %>">
+	<li class="event_title">
+		<%= image_tag('ui/arrow_down.png', :class => "arrow") %>
+		<%= event.date.strftime("%A %d.%m.%y") %> - <%= event.title %>
+	</li>
+</a>
+<li class="short_description" data-id="<%= event.id %>">
+	<%= image_tag(Photo.last.image, :width => "200px") %>
+	<%= link_to simple_format(event.short_description), event %>
+</li>

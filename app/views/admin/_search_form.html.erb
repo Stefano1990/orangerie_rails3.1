@@ -1,0 +1,9 @@
+<%= semantic_form_for([:admin, @search], :html => {:method => :get}) do |f| %>
+	<%= f.inputs do%>
+		<%= f.input :text, :label => 'Search for:' %>
+		<%= f.input :class, :value => params[:controller].split(/\//).last, :as => :hidden %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+<% end %>

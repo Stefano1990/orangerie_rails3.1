@@ -1,0 +1,42 @@
+<% unless @album.photos.empty? %>
+	<%= render @photos %>
+<% else %>
+	"No photos yet."
+<% end %>
+<ul class="infos">
+	<li>
+		<%= t('users.photos.uploaded_at')%> 
+		<%= l @album.created_at, :format => :short %>
+	</li>
+	<% if current_user?(@user)%>
+		<%= button_to t('users.albums.delete'), user_album_path(@user, @album), 
+		        :method => :delete,
+		        :confirm => "?",
+				:class => "delete"%>
+		<li><%= link_to t('users.albums.edit'), edit_user_album_path(@user, @album) %></li>
+	<% end %>
+	<li>Make album cover</li>
+</ul>
+<ul class="description">
+	<li class="title"><%= @album.title %></li>
+	<li><%= @album.description %></li>
+</ul>
+<%= render @album.comments %>
+<%= render :partial => "comments/comment_form" %>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow feature
+		$('div #comment_body').autogrow();
+		
+		$('div #new_comment').submitWithAjax();
+		$('.button_to').submitWithAjax();
+		
+		// word and letter counter
+		var post_options = {
+			maxCharacterSize: 600,
+			displayFormat: ''
+		}
+		$('div #new_comment').textareaCount(post_options);
+	});
+</script>

@@ -1,0 +1,5 @@
+en:
+    albums:
+      flash:
+          created:                  "Album has been created."
+          not_created:              "Album was not created."

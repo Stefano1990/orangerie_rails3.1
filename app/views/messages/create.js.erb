@@ -1,0 +1,17 @@
+<% flash.delete(:success) %>
+if($('div.success').length == 0 ){
+	$('#middle-box').prepend("<div class=\"success\">Message sent.</div>");
+	$('div.success').delay(30000).slideUp(function(){
+		$(this).remove();
+	});
+}
+$("ol.messages").prepend("<%=j render @message %>");
+// reset the size of the post field and reset the form
+$("#message_content").css("height", "48px");
+$("#message_content").val('');
+$('.button_to').first().submitWithAjax();
+
+// FIXME: all to do with notifications... needs to be prettied up I would say..
+<% notify "/users/notifications/#{@message.recipient.id}" do %>
+	<%= render 'notifications/show_notification', :item => @message %>
+<% end %>

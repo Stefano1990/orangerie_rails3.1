@@ -1,0 +1,4 @@
+<li class="post" data-id="<%= item.id %>" data-created_at="<%= item.created_at %>">
+	<%= user_image_link :user => item.user, :size => :small, :resize => "20px" %>
+	<%= link_to item.user.name, item.user %> wrote on your <%= link_to "wall", item %>
+</li>

@@ -1,0 +1,12 @@
+// This file contains the styles for the right bar
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'base';
+
+#right-box {
+	img {
+		vertical-align: middle;
+		margin-right: 5px;
+		margin-bottom: 3px;
+	}
+}

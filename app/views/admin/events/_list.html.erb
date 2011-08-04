@@ -1,0 +1,8 @@
+<% events.each do |event| %>
+	<tr>
+		<td><%= event.date.strftime("%A %d.%m.%y") %></td>
+		<td><%= link_to "#{event.title}", admin_event_path(event) %></td>
+		<td><%= event.reservations.count %></td>
+		<td>TO DO guestlist</td>
+	</tr>
+<% end %>

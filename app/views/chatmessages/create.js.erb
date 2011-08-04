@@ -1,0 +1,13 @@
+<% params[:controller] == "chat" ? chat_size = 20 : chat_size = 10 %>
+if(($("#chatMessages").children().size() >= <%= chat_size %>)){
+	$("#chatMessages").children().first().remove();
+};
+<% notify "/chats/trusted" do %>
+	if(($("#chatMessages").children().size() >= <%= chat_size %>)){
+		$("#chatMessages").children().first().remove();
+	};
+	$("#chatMessages").append("<%= escape_javascript(render :partial => 'chat/chat_message', :locals => { :chat_message => @chat_message }) %>"); 
+<% end %>
+$("#chatmessage_body").css("height", "26px");
+$("#new_chatmessage")[0].reset();
+$("#chatmessage_body").focus();

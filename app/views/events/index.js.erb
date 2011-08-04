@@ -1,0 +1,4 @@
+$("li.event").remove();
+$("h2").remove();
+$("#events").prepend("<h2><%= @series.name %></h2>");
+$("#events").append("<li class=\"event\"><ol><%=j render :partial => 'event', :collection => @events %><ol></li>");

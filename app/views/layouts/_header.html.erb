@@ -1,0 +1,49 @@
+<header>
+	<div id="top-box">
+		<% if 1 == 2 %>
+		<div id="profil-box">
+			<% unless user_signed_in? %>
+				<%= render 'devise/sessions/new' %>
+			<% else %>
+				<%= link_to %(Zum profil #{current_user.name}), current_user %>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+  	<div id="nav">
+    	<ul>
+			
+			<% Category.order(:position).each do |category| %>
+				<li class="TopLevel"><a href="#"><%= category.name %></a>
+					<% unless category.pages.empty? %>
+						<ul class="SubNav">
+							<li class="SubNavDivider">&nbsp;</li>
+							<% category.pages.order(:position).each do |page|  %>
+								<li><%= link_to page.title, page %></li>
+								<li class="SubNavDivider">&nbsp;</li>
+							<% end %>							
+						</ul>
+					<% end %>
+				</li>
+				<li class="NavDivider">&nbsp;</li>
+			<% end %>
+			<li class="TopLevel"><%= link_to "Gästebuch", guestbook_messages_path %></li>
+			<li class="NavDivider">&nbsp;</li>
+			<li class="TopLevel"><%= link_to "Events", events_path %>
+				<ul class="SubNav">
+					<li class="SubNavDivider">&nbsp;</li>
+					<li>Reviews</li>
+				</ul>
+			</li>
+			<li class="NavDivider">&nbsp;</li>
+			<li class="TopLevel"><%= link_to "Kontakte" %></li>
+    	</ul>
+		<% if signed_in? %>
+			<div id="right-user-navi">
+				<a href="#" id="show_notifications">#</a>
+				<%= user_image_link(:user => current_user, :resize => "59px") %>
+				
+			</div>
+		<% end %>
+	  </div>
+</header>

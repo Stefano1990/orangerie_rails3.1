@@ -1,0 +1,5 @@
+<li data-created_at="<%= item.created_at %>" data-id="<%= item.id %>">
+	<%= user_image_link :user => item.user, :size => :small, :resize => "20px" %>
+	<%= link_to item.user.name, item.user %> commented on your 
+	<%= link_to "#{item.commentable.class.to_s}", item.commentable %>
+</li>

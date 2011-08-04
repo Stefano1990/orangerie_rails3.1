@@ -1,0 +1,9 @@
+<% series.each do |series| %>
+	<tr>
+		<td><%= series.events.count %></td>
+		<td><%= link_to "#{series.name}", edit_admin_series_path(series) %></td>
+		<td><%= button_to "DELETE", admin_series_path(series), :method => :delete, 
+				:class => "destroy",
+				:id => "destroy_link" %></td>
+	</tr>
+<% end %>

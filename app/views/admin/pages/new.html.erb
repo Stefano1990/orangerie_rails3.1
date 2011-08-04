@@ -1,0 +1,10 @@
+<%= semantic_form_for([:admin, @page], :html => {:method => :post}) do |f| %>
+	<%= f.inputs :name => 'page' do %>
+		<%= f.input :title, :label => 'Title:' %>
+		<%= f.input :content, :label => 'Content' %>
+		<%= f.input :category, :label => 'Category', :as => :select, :include_blank => false %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+<% end %>

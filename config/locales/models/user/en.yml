@@ -1,0 +1,136 @@
+en:
+  users:     
+    navigation:
+        wall:                   "Wall"
+        infos:                  "Infos"
+        friends:                "Friends"
+        photos:                 "Photos"
+        messages:               "Messages"
+        upload_photo:           "Upload a photo"
+        new_album:              "new album"
+        my_friends:             "My friends:"
+            
+        become_friends:         "Add friend"
+        delete_friend:          "Delete friend"
+        
+    livestream:
+        on_your_mind:           "What's on your mind?"                  
+        
+    infos:
+        general:                "Infos"
+        about_us:
+            one:                "About me"
+            other:              "About us"
+        looking_for:            
+            one:                "I am looking for"
+            other:              "We are looking for"
+        like:                  
+            one:                "What I like"
+            other:              "What we like"
+        dislike:               
+            one:                "What I dislike"
+            other:              "What we dislike"
+        region:
+            one:                "My region"
+            other:              "Our region"
+        to_do:
+            one:                "What I want to do"
+            other:              "What we want to do"
+        mobility:
+            one:                "I am mobile"
+            other:              "We are mobile"
+        age:                    "Age"
+        height:                 "Height"
+        weight:                 "Weight"
+        hair_color:             "Hair color"
+        eye_color:              "Eye color"
+        appearance:             "Appearance"
+        smoking:                 "Smoker"
+        bi_tendency:            "Bi-tendency"
+        sex_tend:           "Dominant/Devot"
+
+    posts:                      
+      delete:                   "Delete post"
+
+    messages:
+        send_me_a_message:
+            one:                "Send me a message"
+            other:              "Send us a message"
+        navigation:
+            inbox:              "inbox"
+            sent:               "sent"
+            trash:              "trash"
+
+        titles:
+            new:                "new message"
+            inbox:              "inbox"
+            sent:               "sent messages"
+            trash:              "trashed messages"
+            reply:              "reply"
+
+    comments:
+        title:                  "Write a comment"
+        show:
+            zero:               "Comment"
+            one:                "%{count} Comment"
+            other:              "%{count} Comments"
+        created_ago:            "%{time} ago by "
+        delete:                 "Delete comment"
+        
+        
+    photos:
+        show_all:               "photos"
+        new:                    "upload a photo"
+        uploaded_at:            "Uploaded: "
+        show:                   "Album: %{album}"
+        no_description:         "No description."
+        delete:                 "Delete photo"
+        report:                 "Report photo"
+    
+    albums:
+        photo:
+            zero:               "no photos"
+            one:                "%{count} photo"
+            other:              "%{count} photos"
+        show_all:               "all albums"
+        new:                    "new album"
+        photo-count:
+            zero:               "0 photos"
+            one:                "%{count} photo"
+            other:              "%{count} photos"
+        delete:                 "Delete album"
+        edit:                   "Edit album"
+        your_albums:            "Your albums"
+        his_albums:
+            one:                "My albums"
+            other:              "Our albums"
+    report:
+        text:                   "Report"
+        title:                  "Report this content."
+    flash:
+        user_updated:           "You updated your profile."
+    contacts:
+        contacts_in_common:
+            zero:               "No contacts in commmon"
+            one:                "· %{count} contact in common"
+            other:              "· %{count} contacts in common"
+              
+  formtastic:
+    titles:
+
+    labels:
+        message:
+            new:
+                subject:        "Subject"
+                content:        "Content"
+        infos:                  
+            edit:               
+                age_m:          "Age"
+                height_m:       ""
+
+    actions:
+        message:
+            create:             "Send message"
+        post:                   
+            create:             "Send"
+  

@@ -1,0 +1,65 @@
+#nav {
+	width: 100%;
+	float: left;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-bottom: 1px solid #8a0302;
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		float: left;
+		
+		a {
+			display: block;
+		}
+		&:hover .SubNav {
+			visibility: visible;	
+		}
+	}
+}
+.TopLevel {
+	a {
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 20px;
+		height: 39px;
+		&:hover {
+			background: url('/assets/ui/navi/highlight.png') repeat-x;
+		}
+	}	
+}
+.SubNav {
+	position: absolute;
+	display: block;
+	visibility: hidden;
+	z-index: 1;
+	li {
+		margin: 1px 0 0 -1px;
+		a {
+			padding: 10px 10px 10px 10px;
+			margin: 0;
+			height: 20px;
+			&:hover {
+				background: url('/assets/ui/navi/highlight_inverted.png') repeat-x;
+			}
+		}
+	}
+}
+.NavDivider {
+	width: 1px;
+	height: 59px;
+	background-image: url('/assets/ui/navi/naviborders.png');
+}
+.SubNavDivider {
+	width: 1px;
+	height: 30px;
+	background: url('/assets/ui/navi/naviborders.png');
+	background-position: bottom;
+}
+/* for the user navi on the right. */
+#right-user-navi { float: right; height: 59px; }
+#right-user-navi a { vertical-align: top; }

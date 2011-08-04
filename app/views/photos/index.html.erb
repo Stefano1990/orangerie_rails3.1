@@ -1,0 +1,56 @@
+<div>
+	<%= current_user?(@user) ? ( raw %(<a class="rfloat penIcon" id="albumEdit" href="#{edit_user_album_path(@user, @album)}"></a>) ) : "" %>
+</div>
+<div class="userContentTitle timeAgo">
+	Album title: <%= @album.title %>
+</div>
+<table border="0" cellspacing="0" cellpadding="0">
+	<tbody>
+		<% i = 0 %>
+		<% number_of_rows_photos.times do %>
+		<tr>
+			<td class="albumThumb"><%= photo_thumb(:i => i) %></td>
+			<td class="albumThumb"><%= photo_thumb(:i => i+1) %></td>
+			<td class="albumThumb"><%= photo_thumb(:i => i+2) %></td>
+		</tr>
+		<% i = i+3 %>
+		<% end %>
+	</tbody>
+</table>
+<div id="description">
+	<%= current_user?(@user) ? ( raw %(<a class="rfloat penIcon" id="descriptionEdit"></a>) ) : "" %>
+	<%= @album.description %>
+</div>
+<% if current_user?(@user) %>
+	<div class="description">
+		<%= semantic_form_for([@user, @album], :html => {:method => :put, :id => :edit_album, :remote => true}) do |f| %>
+		<fieldset class="inputs">
+			<ol>
+				<div id="wrap" class="new-comment">
+					<%= f.input :description, :label => false %>
+				</div>
+				<%= f.commit_button 'Senden' %>
+			</ol>
+		</fieldset>
+		<% end %>
+	</div>
+<% end %>
+<%= render 'comments/comments', :commentable => @album %>
+<%= render 'comments/form', :commentable => @album %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('div.description').hide();
+		$("#album_description").autogrow();
+		
+		$('#descriptionEdit').click(function(){
+			$('#description').hide();
+			$('div.description').show();
+			$('#descriptionEdit').hide();
+			return false;
+		});
+		
+		$('.button_to').submitWithAjax();
+		$('#edit_album').submitWithAjax();
+		$('#new_comment').submitWithAjax();
+	});
+</script>

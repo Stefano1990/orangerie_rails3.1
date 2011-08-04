@@ -1,0 +1,12 @@
+<% content_for :page_navi do %>
+	<ul class="noDeco profileNavigation">
+		<li><%= link_to "Edit", edit_admin_event_path(@event) %></li>
+		<li><%= link_to "All images", admin_categories_path %></li>
+		<li><%= link_to "Reservations", admin_event_reservations_path(@event) %></li>
+	</ul>
+<% end %>
+<h2><%= @event.title %></h2>
+<h3>Short description:</h3>
+<p><%= simple_format @event.short_description %></p>
+<h3>Long description:</h3>
+<p><%= simple_format @event.long_description %></p>

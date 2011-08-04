@@ -1,0 +1,56 @@
+<%= link_to "Overview", user_album_photos_path(@user, @album) %>
+<ul class="previous_next">
+	<% unless @photo.previous.nil? %>
+		<li><%= link_to "Previous", user_album_photo_path(@user, @album, @photo.previous) %></li>
+	<% end %>
+	<% unless @photo.next.nil? %>
+		<li><%= link_to "Next", user_album_photo_path(@user, @album, @photo.next) %></li>
+	<% end %>
+</ul>
+<div\>
+	<%= image_tag(@photo.image.url) %>
+</div>
+<div class="photoDescription">
+	<div id="description">
+		<%= current_user?(@user) ? ( raw %(<a class="rfloat penIcon" id="descriptionEdit"></a>) ) : "" %>
+		<%= @photo.description || t('users.photos.no_description') %>
+	</div>
+	<% if current_user?(@photo.user) %>
+		<%= button_to "Make avatar", user_album_photo_make_avatar_path(@user, @album, @photo), 
+		        :method => :put %>
+	<% end %>
+	<% if current_user?(@user) %>
+		<div class="description">
+			<%= semantic_form_for([@user, @album, @photo], :html => {:method => :put, :id => :edit_photo, :remote => true}) do |f| %>
+			<fieldset class="inputs">
+				<ol>
+					<div id="wrap" class="new-comment">
+						<%= f.input :description, :label => false %>
+					</div>
+					<%= f.commit_button 'Senden' %>
+				</ol>
+			</fieldset>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<div class="comments">
+	<%= render "comments/comments", :commentable => @photo %>
+	<%= render "comments/form", :commentable => @photo %>
+</div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('div.description').hide();
+		
+		$('#descriptionEdit').click(function(){
+			$('#description').hide();
+			$('div.description').show();
+			$('#descriptionEdit').hide();
+			return false;
+		});
+		
+		$('#edit_photo').submitWithAjax();
+		$('#new_comment').submitWithAjax();
+		$('.button_to').submitWithAjax();
+	});
+</script>

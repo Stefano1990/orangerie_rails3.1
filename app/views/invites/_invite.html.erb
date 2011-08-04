@@ -1,0 +1,14 @@
+<li class="post" data-id="<%= invite.id %>">
+	<div class="post_user_picture">
+		<%= user_avatar :user => invite.user, :size => :small, :resize => "50px" %>
+	</div>
+	<div class="post_body">
+		<%= link_to invite.user.name, invite.user %><br/>
+		<% unless invite.contact == invite.user %>
+			<%= simple_format "#{invite.user.name} wants you to come to #{link_to invite.invitable.title, invite.invitable}" %>
+		<% else %>
+			<%= simple_format "#{invite.user} is attending #{link_to invite.invitable.title, invite.invitable}" %>
+		<% end %>
+		<span class="timeAgo"><%= distance_of_time_in_words_to_now(invite.created_at) %> ago</span> 
+	</div>
+</li>

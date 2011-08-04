@@ -1,0 +1,24 @@
+<h1><%= @page.title %></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar molestie lectus at vulputate. Nam lacinia lacus sit amet urna vestibulum a sodales nunc ullamcorper. Etiam justo sapien, ultrices a ullamcorper eu, aliquet non urna. Aliquam erat volutpat. Fusce suscipit pellentesque turpis et pretium. Mauris id neque ante, vitae aliquet dolor. Cras auctor, erat quis porttitor suscipit, orci tellus placerat nisl, in ornare lectus libero quis leo. Duis tortor lorem, faucibus nec tempor sit amet, congue et elit. Morbi commodo dui vitae velit dapibus porta. Aliquam erat volutpat.</p>
+<h3>Restaurant</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar molestie lectus at vulputate. Nam lacinia lacus sit amet urna vestibulum a sodales nunc ullamcorper. Etiam justo sapien, ultrices a ullamcorper eu, aliquet non urna. Aliquam erat volutpat. Fusce suscipit pellentesque turpis et pretium. Mauris id neque ante, vitae aliquet dolor. Cras auctor, erat quis porttitor suscipit, orci tellus placerat nisl, in ornare lectus libero quis leo. Duis tortor lorem, faucibus nec tempor sit amet, congue et elit. Morbi commodo dui vitae velit dapibus porta. Aliquam erat volutpat.</p>
+<h3>Bar und G&auml;ste</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar molestie lectus at vulputate. Nam lacinia lacus sit amet urna vestibulum a sodales nunc ullamcorper. Etiam justo sapien, ultrices a ullamcorper eu, aliquet non urna. Aliquam erat volutpat. Fusce suscipit pellentesque turpis et pretium. Mauris id neque ante, vitae aliquet dolor. Cras auctor, erat quis porttitor suscipit, orci tellus placerat nisl, in ornare lectus libero quis leo. Duis tortor lorem, faucibus nec tempor sit amet, congue et elit. Morbi commodo dui vitae velit dapibus porta. Aliquam erat volutpat.</p>
+<%= simple_format @page.content %>
+<% if @page.is_commentable %>
+	<%= render @page.comments %>
+	<%= render :partial => 'comments/form', :locals => { :commentable => @page} %>
+<% end %>
+<%= content_for :rightBar do %>
+	<% @page.page_photos.each do |photo| %>
+		<a href="<%= photo.image %>" rel="prettyPhoto"><%= image_tag(photo.image, :width => "293px", :alt => "eine kleine kirche")%></a>
+	<% end %>
+	
+<% end %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+			$("a[rel^='prettyPhoto']").prettyPhoto({
+				social_tools: false
+			});
+	});
+</script>

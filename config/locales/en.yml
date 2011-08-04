@@ -1,0 +1,46 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  general:
+      yees:                     "Yes"
+      noo:                      "No"
+      iii:                      "I"
+      him:                      "Him"
+      her:                      "Her"
+      wee:                      "We"
+      edit:                     "Edit"
+      sex:
+        couple:                   "couple"
+        male:                      "male"
+        female:                    "female"
+  posts:      
+      flash:
+          wall_post_created:        "Wall post created."
+          wall_post_destroyed:      "Wall post destroyed."
+          wall_post_error:          "Wall post could not be destroyed."
+          wall_post_blank:          "Wall post can not be blank."
+          not_allowed:              "Not allowed."
+          
+          user_updated:             "Profile has been updated."
+  comments:
+      flash:
+          created:                  "Comment has been created."
+          error:                    "Comment could not be created."
+          destroyed:                "Comment destroyed."
+          not_allowed:              "Not allowed."
+  connections:
+      flash:
+          request_sent:             "Connection request sent!"
+          request_accepted:         "Accepted connection with {user}"
+          request_rejected:         "Declined connection with {user}"
+          ended:                    "Connection with {user} ended"
+          
+          error:
+              invalid:              "Invalid connection"
+              trusted:              "You have to be trusted to do that."
+      
+  time:                         
+      formats:                    
+          short:                    "%e. %b "
+     

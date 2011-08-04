@@ -1,0 +1,11 @@
+<%= semantic_form_for(@category, :url => admin_category_path(@category), :html => {:method => :put} ) do |f| %>
+	<%= f.inputs do %>
+		<div id="wrap" class="messageSubject">
+			<%= f.input :name %>
+		</div>
+		<%= f.commit_button 'Send' %>
+	<% end %>
+<% end %>
+<table id="categories">
+	<%= render :partial => 'page_list' %>
+</table>

@@ -1,0 +1,24 @@
+<%= semantic_form_for(@album, :url => user_album_path(@user, @album), :html => {:method => :put} ) do |f| %>
+	<%= f.inputs do %>
+		Title:
+		<div id="wrap" class="messageSubject">
+			<%= f.input :title, :label => false %>
+		</div>
+		Description:
+		<div id="wrap" class="messageBody">
+			<%= f.input :description, :label => false, :required => :false  %>
+		</div>	
+		<li class="albumThumbGrid"><%= f.inputs :for => :photos, :class => "photoThumbnail" do |builder|%>
+			<%= image_tag(builder.object.image.url(:album)) %>
+			<%= builder.input :_destroy, :as => :boolean, :label => "Delete"%>
+			</li>
+		<% end %>
+		<%= f.commit_button 'Send' %>
+	<% end %>
+<% end %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow feature
+		$('#album_description').autogrow();
+	});
+</script>

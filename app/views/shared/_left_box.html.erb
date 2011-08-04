@@ -1,0 +1,22 @@
+<%= user_image_link(:user => @user, :avatar => :true, :size => :big_avatar, :resize => "200px" ) %>
+<div class="leftBoxTitle">
+	<%= current_user?(@user) ? ( raw %(<a class="rfloat penIcon" href="#{edit_user_path(current_user)}"></a>) ) : "" %>
+	<%= t('users.infos.about_us', :count => count(@user)) %>
+</div>
+<div>
+	<%= simple_format truncate(@user.infos.about_us, :length => 600, :separator => ' ') %>
+</div>
+<% unless current_user?(@user) %>
+	<div>
+		<%= send_message_link(@user, image=true) %>
+	</div>
+<% end %>
+<div>
+	
+</div>
+<div class="leftBoxTitle">
+	My friends
+</div>
+<div>
+	<%= render "shared/friends_grid" %>
+</div>

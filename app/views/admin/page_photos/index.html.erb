@@ -1,0 +1,5 @@
+<%= link_to "Go back", edit_admin_page_path(@page) %> | 
+<%= link_to "Upload new photo", new_admin_page_page_photo_path(@page) %><br/><br/>
+<% @page.page_photos.each do |photo| %>
+	<%= image_tag(photo.image)%>
+<% end %>

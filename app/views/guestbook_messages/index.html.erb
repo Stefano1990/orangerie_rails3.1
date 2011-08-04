@@ -1,0 +1,25 @@
+<h1>Guestbook</h1>
+<p>Schreib uns einen Eintrag in unser Gästebuch. Was denkst du über unseren Club, hast du Vorschläge zur Verbesserungen, Ideen oder Kritik? Wir wollen sie hören!
+
+Wir lieben kontroverse Diskussionen, wir möchten eure Wünsche und Vorstellungen kennen und wir arbeiten permanent an unserer Leistung unseren Gästen gegenüber. Wir nehmen unsere Gäste ernst und respektieren ihre Meinung, auch wenn wir sie nicht immer teilen.
+
+Kontaktwünsche gehören unter Kontakte und bitte keine Mailanschriften oder Links auf andere Internetseiten, Danke.</p>
+
+<%= user_link(:user => current_user, :avatar => true, :resize => "30px") %>
+<span class="link_as_button">
+	<a href="#" id="show_guestbook_form">G&auml;stebucheintrag schreiben.</a>
+</span>
+<div id="guestbook_message_form">
+	<%= semantic_form_for(GuestbookMessage.new, :remote => true) do |f| %>
+		<%= f.inputs do %>
+			<%= f.input :title %>
+			<%= f.input :body %>
+		<% end %>
+		<%= f.buttons do %>
+			<%= f.commit_button 'Submit' %>
+		<% end %>
+	<% end %>
+</div>
+<ol id="message_list">
+	<%= render @messages %>
+</ol>

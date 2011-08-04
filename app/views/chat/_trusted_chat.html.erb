@@ -1,0 +1,30 @@
+<div id="chatBox">
+	<ul class="noDeco" id="chatMessages">
+		<% Chatmessage.find(:all, :order => "created_at DESC", :limit => 10).reverse.each do |chat_message| %>
+			<%= render :partial => 'chat/chat_message', :locals => { :chat_message => chat_message }  %>
+		<% end %>
+	</ul>
+</div>
+
+<%= render :partial => 'chat/chatmessage_form' %>
+<%= link_to 'Zum chat', chat_trusted_path %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow feature
+		$('#chatmessage_body').autogrow();
+		$("#new_chatmessage").submitWithAjax();
+		
+		$('#chatmessage_body').keypress(function(e){
+		    if (e.ctrlKey && e.keyCode == 13) {
+		        $(this).closest('form').submit();
+		    }
+		});
+	
+		// word and letter counter
+		var post_options = {
+			maxCharacterSize: 199,
+			displayFormat: ''
+		}
+		$('#chatmessage_body').textareaCount(post_options);
+	});
+</script>

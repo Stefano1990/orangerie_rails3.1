@@ -1,0 +1,20 @@
+<li class="conversation" data-id="<%= message.id %>">
+	<div class="message_user_picture">
+		<%= user_avatar :user => message.sender, :size => :small %>
+	</div>
+	<% if 1==0 %>
+		<% if current_user?(message.recipient) or current_user?(message.sender) %>
+			<%= button_to "", message_path(message), 
+			        :method => :delete,
+					:remote => true,
+					:class => "rfloat destroyIcon destroy"%>
+		<% end %>
+	<% end %>
+	<div class="message_subject">
+		<%= link_to message.sender.name, message.sender %><br/>
+		<%= message.content %><br/>
+		<span class="timeAgo"><%= distance_of_time_in_words_to_now(message.created_at) %> ago</span>
+	</div>
+</li>	
+	
+		

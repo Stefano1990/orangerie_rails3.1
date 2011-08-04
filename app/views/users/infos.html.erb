@@ -1,0 +1,66 @@
+<% unless @user.infos.sex.nil? %>
+<div class="generalInfo">
+	<table class="userInfos">
+		<tbody>
+			<tr>
+				<th class="label">Sex</th>
+				<td class="data"><%= @user.infos.sex %></td>
+			</tr>
+			<tr class="spacer"></tr>
+		</tbody>
+	</table>
+</div>
+<%= user_infos(:att => "about_us") %>
+<%= user_infos(:att => "looking_for") %>
+<%= user_infos(:att => "region") %>
+<%= user_infos(:att => "like") %>
+<%= user_infos(:att => "dislike") %>
+<%= user_infos(:att => "to_do") %>
+<%= user_infos(:att => "mobility") %>
+	
+
+<div class="individualInfos">
+	<table class="userInfos">
+		<% if @user.infos.sex == "Couple" %>
+			<tbody>
+				<tr>
+					<th class="label">&nbsp;</th>
+					<td class="label">Our girl</td>
+					<th class="label">Our boy</th>
+					<td class="data">&nbsp;</td>
+				</tr>
+			</tbody>
+			<%= user_infos_c(:att => "age") %>
+			<%= user_infos_c(:att => "weight") %>
+			<%= user_infos_c(:att => "hair_color") %>
+			<%= user_infos_c(:att => "appearance") %>
+			<%= user_infos_c(:att => "bi_tendency") %>
+			<%= user_infos_c(:att => "sex_tend") %>
+			<%= user_infos_c(:att => "smoking") %>
+			<%= user_infos_c(:att => "eye_color") %>
+		<% end %>
+		<% if @user.infos.sex == "Male" %>
+			<%= user_infos_m(:att => "age") %>
+			<%= user_infos_m(:att => "weight") %>
+			<%= user_infos_m(:att => "hair_color") %>
+			<%= user_infos_m(:att => "appearance") %>
+			<%= user_infos_m(:att => "bi_tendency") %>
+			<%= user_infos_m(:att => "sex_tend") %>
+			<%= user_infos_m(:att => "smoking") %>
+			<%= user_infos_m(:att => "eye_color") %>
+		<% end %>
+		<% if @user.infos.sex == "Female" %>
+			<%= user_infos_f(:att => "age") %>
+			<%= user_infos_f(:att => "weight") %>
+			<%= user_infos_f(:att => "hair_color") %>
+			<%= user_infos_f(:att => "appearance") %>
+			<%= user_infos_f(:att => "bi_tendency") %>
+			<%= user_infos_f(:att => "sex_tend") %>
+			<%= user_infos_f(:att => "smoking") %>
+			<%= user_infos_f(:att => "eye_color") %>
+		<% end %>
+	</table>
+</div>
+<% else %>
+	The user has not filled out any infos yet.
+<% end %>

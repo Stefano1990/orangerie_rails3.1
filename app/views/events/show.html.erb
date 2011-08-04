@@ -1,0 +1,47 @@
+<%= link_to("Privous", event_path(@event.previous)) unless @event.previous.nil? %>
+<%= link_to("Next", event_path(@event.next)) unless @event.next.nil? %>
+<h2><%= "#{@event.title} (#{@event.date.strftime("%d.%m.%Y")})" %></h2>
+<%= image_tag(PagePhoto.last.image, :width => "660px", :height => "200px")%>
+<%= simple_format @event.long_description %>
+<a href="#" id="showReservationForm">Make a reservation.</a>
+<%= semantic_form_for([@event, Reservation.new]) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :guests_female, :label => "Female guests" %>
+		<%= f.input :guests_male, :label => "Male guests" %>
+		<%= f.input :remarks %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'I am coming' %>
+	<% end %>
+<% end %>
+
+<a href="#" class="jqModal">Invite your friends!</a>
+	<div class="jqmWindow" id="invite_friends_window">
+	<%= form_tag(event_invite_friends_path(@event), :method => :post) do |f| %>
+		<h3>Ask your friends to come to the party!</h3>
+		<div id="list_scroller">
+			<ol class="friends_list">
+				<% @friends_not_coming.each do |friend| %>
+					<li class="friend" data-id="<%= friend.id %>">
+						<%= user_image_link(:user => friend, :resize => "50px") %>
+						<%= user_link(:user => friend) %>
+						<input type="checkbox" name="friend_ids[<%= friend.id %>]" value="<%= friend.id %>" /><br />
+					</li>
+				<% end %>
+			</ol>
+		</div>
+		<%= submit_tag "Submit", :disable_with => 'Submiting...' %>
+	<% end %>
+	<a href="#" class="jqmClose">Close</a>
+</div>
+<h3>Already coming (<%= "#{@event.friends_coming(current_user).count} friends" %>):</h3>
+<% @event.reservations.each do |reservation| %>
+	<%= user_image_link(:user => reservation.user, :resize => "50px") %>
+<% end %>
+<% if !@event.comments.empty? and @event.has_comments %>
+	<h3>Comments:</h3>
+	<ul class="comments_list">
+		<%= render @event.comments, :commentable => @event %>
+		<%= render 'comments/form', :commentable => @event %>
+	</ul>
+<% end %>

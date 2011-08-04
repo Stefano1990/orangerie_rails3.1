@@ -1,0 +1,20 @@
+<ul class="list-no-deco"><%= render @results %></ul>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// functions to show and hide comments
+		$('.comment-user').click(function(){
+			var comment_id = $(this).attr("data-id");
+			if($('li[data-id='+comment_id+'].comment-body').attr('data-toggled')==0){
+				$('li[data-id='+comment_id+'].comment-body').fadeIn();
+				$('li[data-id='+comment_id+'].comment-body').attr('data-toggled', 1);
+				return false;
+			} else {
+				$('li[data-id='+comment_id+'].comment-body').fadeOut();
+				$('li[data-id='+comment_id+'].comment-body').attr('data-toggled', 0);
+				return false;
+			}
+			
+		});
+	});
+</script>

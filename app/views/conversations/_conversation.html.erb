@@ -1,0 +1,10 @@
+<li class="conversation" data-id="<%= conversation.id %>">
+	<div class="message_user_picture">
+		<%= user_avatar :user => conversation.other_user(current_user), :size => :small %>
+	</div>
+	<div class="message_subject">
+		<%= link_to conversation.other_user(current_user).name, conversation.recipient %><br/>
+		<%= link_to truncate(conversation.messages.first.subject, :length => 24, :separator => ' '), reply_message_path(conversation.messages.first) %><br/>
+		<span class="timeAgo"><%= distance_of_time_in_words_to_now(conversation.messages.last.created_at) %> ago</span>
+	</div>
+</li>

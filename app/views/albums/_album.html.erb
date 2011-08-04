@@ -1,0 +1,6 @@
+<% unless album.photos.empty? %>	
+	<div class="album-thumbnail">
+		<%= link_to image_tag(album.photos.last.image.url(:album)), user_album_path(@user, album) %>
+		<span class="title"><%= t('users.albums.photo-count', :count  => album.photos.count) %></span>
+	</div>
+<% end %>

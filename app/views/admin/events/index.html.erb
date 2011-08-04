@@ -1,0 +1,38 @@
+<% content_for :sub_page_navi do %>
+	<ul class="noDeco profileNavigation">
+		<li><%= link_to "New event", new_admin_event_path %></li>
+		<li><%= link_to "show event series", admin_series_index_path %></li>
+	</ul>
+<% end %>
+<h2>Upcoming events</h2>
+<table id="categories">
+	<tr>
+		<td>Date</td>
+		<td>Title</td>
+		<td>Reservations</td>
+		<td>Guestlist</td>
+	</tr>
+	<%= render :partial => "list", :locals => { :events => @upcoming_events} %>
+</table>
+<% if !@events_today.empty? %>
+	<h2>Events today</h2>
+	<table id="categories">
+		<tr>
+			<td>Date</td>
+			<td>Title</td>
+			<td>Reservations</td>
+			<td>Guestlist</td>
+		</tr>
+		<%= render :partial => "list", :locals => { :events => @events_today} %>
+	</table>
+<% end %>
+<h2>Past events</h2>
+<table id="categories">
+	<tr>
+		<td>Date</td>
+		<td>Title</td>
+		<td>Reservations</td>
+		<td>Guestlist</td>
+	</tr>
+	<%= render :partial => "list", :locals => { :events => @past_events} %>
+</table>

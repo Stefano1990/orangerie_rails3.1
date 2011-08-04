@@ -1,0 +1,34 @@
+<%= form_tag(events_path, :method => :get) do %>
+	Select an event: <%= collection_select(:series_id, :name, Series.all, :id, :name) %>
+<% end %>
+<ol id="events">
+	<% if params[:series].nil? %>
+		<li class="event">
+			<% unless @events_today.empty? %>
+				<h2>Events today</h2>
+				<ol><%= render :partial => 'event', :collection => @events_today %></ol>
+			<% end %>
+		</li>
+		<li class="event">
+			<% unless @upcoming_events.empty? %>
+				<h2>Upcoming events</h2>
+				<ol><%= render :partial => 'event', :collection => @upcoming_events %></ol>
+			<% end %>
+		</li>
+		<li class="event">
+			<% unless @past_events.empty? %>
+				<h2>Past events</h2>
+				<ol><%= render :partial => 'event', :collection => @past_events %></ol>
+			<% end %>
+		</li>
+	<% else %>
+		<li class="event">
+		<% if @events.empty? %>
+			No events found.
+		<% else %>
+			<h2><%= "#{params[:series].to_s.pluralize}" %></h2>
+			<ol><%= render :partial => 'event', :collection => @events %></ol>
+		<% end %>
+		</li>
+	<% end %>
+</ol>

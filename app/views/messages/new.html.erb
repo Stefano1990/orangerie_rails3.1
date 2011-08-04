@@ -1,0 +1,42 @@
+<%= semantic_form_for([current_user, Message.new], :html => {:method => :post, :remote => true}) do |f| %>
+	<%= f.inputs do %>
+		To:
+			<% if @message.reply? %>
+				<%= f.input :recipient_tokens, :label => false, :required => false, :as => :string, :input_html => { "data-pre" => [@message.other_user(current_user)].map(&:attributes).to_json}  %>
+			<% end %>
+			<% unless params[:user_id].nil? %>
+				<%= f.input :recipient_tokens, :label => false, :required => false, :as => :string, :input_html => { "data-pre" => [User.find(params[:user_id])].map(&:attributes).to_json }  %>
+			<% end %>
+			<% if !@message.reply? and params[:user_id].nil? %>
+				<%= f.input :recipient_tokens, :label => false, :required => false, :as => :string   %>
+			<% end %>
+		Subject:
+
+			<% if @message.reply? %>
+				<%= f.input :subject, :label => false, :required => false, :input_html => {:value => @message.parent.subject } %>
+			<% else %>
+				<%= f.input :subject, :label => false, :required => false %>
+			<% end %>
+		Message:
+			<%= f.input :content, :label => false, :required => false %>
+		<%= f.input :parent_id, :as => :hidden, :value => @message.parent.id unless @message.parent_id.nil?%>
+		<%= f.buttons do %>
+			<%= f.commit_button 'Send' %>
+		<% end %>
+	<% end %>
+<% end %>
+<!-- Displayes the parent messages -->
+<% if @message.reply? %>
+	<ol class="messages">
+		<%= render @conversation %>
+	</ol>
+<% end %>
+<%= enable_instant_messaging %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow feature
+		<% if @message.reply? %>
+			$('.button_to').submitWithAjax();
+		<% end %>
+	});
+</script>

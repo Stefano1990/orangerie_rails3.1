@@ -1,0 +1,49 @@
+// This file contains the styles for the notifications
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'base';
+
+#notifications {
+	margin: 0;
+	padding: 0;
+	display: none;
+	list-style: none;
+	li {
+		list-style: none;
+		display: none;
+		padding: 3px 0 3px 0;
+		margin: 3px 0 3px 0;
+		border-bottom: 1px dotted $border_color;
+	}
+}
+// the overlay on the bottom right
+// I called that GROWL, named after a similar system on mac os x.
+#growl {
+	color: $font-color;
+	font-family: 'Georgia', 'Palatino',  serif;
+	font-size: 13px;
+	font-style: italic;
+	line-height: $line_height;
+	overflow:hidden;
+	display: none;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	background-color: rgba(0,0,0,0.3);
+	border: 15px rgba(0,0,0,0.3);
+	border-radius: 15px;
+	#growl_notifications {
+		margin: 10px;
+		padding: 0;
+		list-style: none;
+		li {
+			list-style: none;
+			padding: 3px 0 3px 0;
+			margin: 3px 0 3px 0;
+			img {
+				vertical-align: middle;
+				margin-right: 3px;
+			}
+		}
+	}
+}

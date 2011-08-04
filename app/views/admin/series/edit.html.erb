@@ -1,0 +1,13 @@
+<% content_for :sub_page_navi do %>
+	<ul class="noDeco profileNavigation">
+		<li><%= link_to "Back to event series", admin_series_index_path %></li>
+	</ul>
+<% end %>
+<%= semantic_form_for ([:admin, @series]) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :name, :label => 'Name' %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+<% end %>

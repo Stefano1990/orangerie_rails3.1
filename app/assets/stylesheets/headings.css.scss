@@ -1,0 +1,55 @@
+// This stylesheet contains all the styles for the <h> tags.
+// the usage is:
+// h1: page titles, i.e "Restaurant", "Sauna"
+// h2: profile title, i.e "Stefano's profile"
+// h3: title in the text. usable for the admin.
+// h4: small titles such as the title of posts, etc.
+@import 'base';
+
+h1 {
+	color: $title-color;
+	text-shadow: 1px 1px 1px #5c0200;
+	margin: 0 0 0.5em 0;
+	padding: 0;
+	font-size: 24px;
+	clear: both;
+	font-weight: $font-weight;
+	font-family: $font-family;
+}
+h2 {
+	color: $title-color;
+	text-shadow: 1px 1px 1px #5c0200;
+	margin: 0 0 0.5em 0;
+	padding: 0;
+	font-size: 24px;
+	clear: both;
+	font-weight: $font-weight;
+	font-family: $font-family;	
+}
+h3 {
+	font-size: 16px;
+	clear: both;
+	margin: 0.6em 0 0.6em 0 !important;
+	font-weight: normal !important;
+	color: #ffefb1;
+}
+h4 {
+	font-size: $font-size;
+	color: $title-color;
+	margin: 0 0 0.3em 0;
+	font-weight: $font-weight;
+	padding: 0;
+	font-weight: $font-weight;
+	font-family: $font-family;
+	display: inline;
+}
+h5 {
+	color: #FFFDE4;
+	font-family: inherit;
+	font-size: 13px;
+	font-style: italic;
+	line-height: 18px;
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+}

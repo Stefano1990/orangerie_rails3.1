@@ -1,0 +1,231 @@
+/* -------------------------------------------------------------------------------------------------
+
+Load this stylesheet after formtastic.css in your layouts to override the CSS to suit your needs.
+This will allow you to update formtastic.css with new releases without clobbering your own changes.
+
+For example, to make the inline hint paragraphs a little darker in color than the standard #666:
+
+form.formtastic fieldset > ol > li p.inline-hints { color:#333; }
+
+HINT:
+The following style may be *conditionally* included for improved support on older versions of IE(<8)
+form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
+
+--------------------------------------------------------------------------------------------------*/
+@import 'base';
+
+@mixin font-properties {
+	font-size: $font-size;
+	color: $font-color;
+	font-weight: normal;
+	font-style: $font-style;
+	line-height: $line-height;
+	font-family: 'Georgia', 'Palatino',  serif;
+}
+@mixin input-properties {
+	background-color: rgba(120,0,0,0.15);
+	border: 1px solid $border-color !important;
+	outline-width: 0;
+	overflow: hidden;
+	margin: 0;
+	padding: 3px;
+	resize: none;
+	cursor: pointer;
+	
+}
+form.formtastic {
+	fieldset ol li fieldset legend { margin-left: -6px; }
+	input {
+		@include font-properties;
+		@include input-properties;
+		width: 73%;
+	
+		.create {
+			max-width: 100% !important;
+			padding: 5px;
+		}
+	}
+	textarea {
+		@include font-properties;
+		@include input-properties;
+	}
+	label {
+		@include font-properties;
+	}
+	li { margin-bottom: 0 !important; }
+	.buttons {
+		li {
+			float: right !important;
+		}
+	}
+}
+#form-male li, #form-female li, #form-common {
+	border-bottom: 1px solid #5d0200;
+	padding: 0 0 10px 0;
+}
+#new_post {
+	#post_body {
+		width: 427px;
+		line-height: $line-height;
+		height: $line-height*2;
+		padding: 3px;
+		margin: 0px;
+	}
+	.buttons {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+	.commit {
+		padding: 0;
+		margin: 0;
+	}
+}
+li.commit {
+	margin: 5px 0 5px 0 !important;
+	width: auto;
+	float: right;
+}
+li.commit input {
+	background-color: #950000;
+	border: 1px solid #600000;
+	border-top: 1px solid #A90000;
+	padding: 5px;
+	line-height: normal !important;
+	text-decoration: none;
+	cursor: pointer;
+	cursor: hand;
+	width: 60px;
+}
+li.commit input:active {
+	background-color: #800000;
+	border-style: inset;
+	border: 1px solid #500000;
+	text-decoration: none;
+	cursor: pointer;
+	cursor: hand;
+}
+/* message form */
+#new_message {
+	width: 100%;
+	border-bottom: 1px dotted #5c0200;
+}
+
+/* style for the word counter */
+.originalTextareaInfo {
+	text-align: right;
+}
+/* style for the album edit */
+.photoThumbnail {
+	width: 140px;
+	height: 170px;
+	border: 1px dotted #700000 !important;
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px 5px 5px 0px !important;
+	display: inline;
+}
+.photoThumbnail ol, .photoThumbnail ol li {
+	padding: 0px !important;
+	margin: 0px !important;
+	width: 100% !important;
+}
+.photoThumbnail ol li label {
+	padding: 0 0 0 5px !important;
+	margin: 0 !important;
+}
+.photoThumbnail ol li input {
+	margin: 0px 5px 0 0 !important;
+	padding: 0px !important;
+	vertical-align: top;
+}
+.albumThumbGrid {
+	margin: 10px 0 10px 0 !important;
+}
+
+form #wrap {
+	border: 1px solid #700000;
+	padding: 5px;
+	margin: 0px;
+	background-color: rgba(81,2,0,0.4);
+}
+.description textarea {
+	line-height: 18px;
+	display: block;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 26px;
+	cursor: pointer;
+	cursor: hand;
+	outline: none;
+}
+#new_message textarea, #message_subject, #message_recipientm, #album_title {
+	line-height: 18px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 26px;
+	cursor: pointer;
+	cursor: hand;
+	outline: none;
+	background: none;
+	border: none;
+}
+.messageSubject {
+	padding: 2px 5px 2px 5px !important;
+	margin: 0 0 10px 0 !important;
+}
+.new-comment {
+	margin-bottom: 10px !important;
+}
+/* user edit form */
+#common ol li{
+	margin-bottom: 5px;
+	padding-bottom: 0px;
+	border-bottom: 1px dotted #700000;
+}
+.genderInfos li, #user_infos_attributes_region, #user_infos_attributes_mobility {
+	margin-bottom: 5px;
+	padding-bottom: 5px !important;
+	border-bottom: 1px dotted #700000;
+}
+#common ol li textarea, #common ol li input, .genderInfos input {
+	border: 1px solid #700000;
+	padding: 5px;
+	width: 350px;
+	background: none;
+}
+#common ol li textarea, .genderInfos input {
+	height: 18px;
+}
+#common ol li label, .genderInfos label {
+	width: 100px;
+	font-weight: normal;
+	color: #ffd2b5;
+	display: block;
+	float: left;
+	margin-top: 4px;
+}
+.infosLabel {
+	font-weight: bold;
+	color: #ffd2b5;
+	margin-top: 10px !important;
+	padding-bottom: 5px !important;
+}
+#flag_submit {
+	background: none;
+	border: none;
+	font-style: italic;
+	padding: none !important;
+	margin: none !important;
+	display: inline !important;
+	color: #ffd2b5;
+	width: auto;
+}
+#new_flag li {
+	display: inline !important;
+	float: left;
+}

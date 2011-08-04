@@ -1,0 +1,5 @@
+$('#large-box').prepend('<div class="success">Guestbook message created.</div>');
+<% flash.delete(:success) %>
+$('#message_list').prepend("<%=j render(@guestbook_message)%>");
+$('#new_guestbook_message')[0].reset();
+$('#guestbook_message_form').slideUp();

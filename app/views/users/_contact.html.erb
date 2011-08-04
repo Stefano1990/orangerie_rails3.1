@@ -1,0 +1,13 @@
+<li class="friend" data-id="<%= friend.id %>">
+	<div class="friend_picture">
+		<%= link_to user_avatar(:user => friend, :size => :small, :resize => "50px"), friend %>
+	</div>
+	<div class="friend_body">
+		<%= link_to friend.name, friend %><br/>
+		<%= truncate(friend.infos.about_us, :length => 80, :separator => ' ') %><br/>
+		<%= friend.infos.sex %> - <%= t('users.friends.friends_in_common', :count => User.friends_in_common(current_user, friend) ) %>
+		<div class="common_friends">
+			< render common friends here. >
+		</div>
+	</div>
+</li>

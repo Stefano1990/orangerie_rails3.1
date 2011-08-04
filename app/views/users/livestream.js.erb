@@ -1,0 +1,4 @@
+<% @livestream.each do |stream_item| %>
+	$(".posts").append('<%=j render "livestream/#{stream_item.activity.item.class.to_s.downcase}", :item => stream_item.activity.item %>');
+<% end %>
+$("#load_more").text("Load more...");

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  	<%= render 'layouts/stylesheets' %>
+	<%= render 'layouts/javascripts' %>
+	<%= enable_notifications %>
+	<%= enable_instant_messaging %>
+	<%= enable_trusted_chat %>
+  	<%= csrf_meta_tag %>
+	<%= yield :head %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+	<div id="big_bg">
+		<div id="container">
+			<%= render 'layouts/header' %>
+			<div id="wrapper">
+				<div id="large-box">
+					<div id="left-box">
+						<%= render :partial => "shared/left_box" %>
+					</div>
+					<div id="middle-box">
+						<div>
+							<h2><%= @user.name %>'s Profil </h2>
+						</div>
+						<div>
+							<%= render :partial => 'shared/user_navi' %>
+						</div>
+						<div>
+							<%= yield %>
+						</div>
+					</div>
+				</div>
+				<div id="right-box">
+					<% unless current_user.notifications.empty? %>
+						<ol id="notifications" data-user-id="<%= current_user.id %>">
+							<li><h3>Notifications:</h3></li>
+							<% current_user.notifications.limit(8).each do |notification| %>
+								<%= render "notifications/#{notification.item.class.to_s.downcase}", :item => notification.item %>
+							<% end %>
+						</ol>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div id="growl">
+			<ol id="growl_notifications" data-user-id="<%= current_user.id %>">
+			</ol>
+		</div>
+  </body>
+</html>

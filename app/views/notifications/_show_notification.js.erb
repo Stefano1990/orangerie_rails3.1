@@ -1,0 +1,11 @@
+var item_id = <%= item.id %>;
+var item_class = "<%= item.class.to_s.downcase %>";
+$('#growl_notifications').prepend('<%=j render "notifications/#{item.class.to_s.downcase}", :item => item %>');
+if($("#growl_notifications").children().length > 3){
+	$("li:last").remove();
+}
+$("#growl").fadeIn();
+$("li."+item_class+"[data-id="+item_id+"]").delay(30000).fadeOut(function(){
+	$("#growl_notifications").fadeOut();
+	$(this).remove();
+});

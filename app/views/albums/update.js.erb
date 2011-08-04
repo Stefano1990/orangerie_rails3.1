@@ -1,0 +1,10 @@
+$('#description')[0].innerHTML = "<%= @album.description %>";
+$('#description').append('<a class=\"rfloat penIcon\"></a>');
+$('div.description').hide();
+$('#description').show();
+$('#descriptionEdit').click(function(){
+            $('#description').hide();
+            $('div.description').show();
+            $('descriptionEdit').hide();
+            return false;
+});

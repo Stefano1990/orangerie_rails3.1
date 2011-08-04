@@ -1,0 +1,18 @@
+<ul class="list-no-deco red-bg">
+	<% flagged_comments.each do |comment| %>
+		<li>
+			<ul class="list-no-deco search-list-item">
+				<li><%= button_to "X", comment_path(comment.id), 
+		   			              		:method => :delete,
+		   					          	:remote => true,
+										:class => :destroy, 
+		  					          	:id => comment.id %></li>
+
+				<li><%= user_link(:user => comment.user, :avatar => true) %></li>
+				<li class="comment-user" data-id="<%= comment.id %>"><%= truncate(comment.body, :length => 300) %></li>
+				<li class="comment-body" data-toggled="0" data-id="<%= comment.id %>" style="display: none;"><%= comment.body %></li>
+				<li>{ <%= comment.commentable_type %> } Titel: "<%= comment.commentable.title %>"</li>
+			</ul>
+		</li>
+	<% end %>
+</ul

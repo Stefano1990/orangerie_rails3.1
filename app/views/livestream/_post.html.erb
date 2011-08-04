@@ -1,0 +1,28 @@
+<li class="post" data-id="<%= item.id %>">
+	<div class="post_user_picture">
+		<%= user_avatar :user => item.user, :size => :small, :resize => "50px" %>
+	</div>
+	<div class="post_body">
+		<% if item.user == item.owner %>
+			<%= link_to item.user.name, item.user %> wrote on his own <%= link_to "wall", item.owner %><br/>
+		<% else %>
+			<%= link_to item.user.name, item.user %> &rarr; <%= link_to item.owner.name, item.owner %><br/>
+		<% end %>
+		<%= simple_format item.body %>
+		<span class="timeAgo"><%= distance_of_time_in_words_to_now(item.created_at) %> ago</span> &middot; 
+		<a data-id="<%= item.id %>" title="<%= I18n.t("users.comments.title") %>" class="showComments">
+			<%= I18n.t("users.comments.show", :count => item.comments.count ) %>
+		</a>
+		&middot;
+		<% semantic_form_for(Flag.new, :html => {:method => :post}) do |f| %>
+			<%= f.input :flaggable_type, :as => :hidden, :value => item.class %>
+			<%= f.input :flaggable_id, :as => :hidden, :value => item.id %>
+			<%= f.input :user_id, :label => false, :as => :hidden, :value => current_user.id %>
+			<%= f.commit_button t("users.report.text") %>
+		<% end %>
+		<div class="comments" data-commentable_id="<%= item.id %>">
+			<%= render "comments/comments", :commentable => item %>
+			<%= render "comments/form", :commentable => item %>
+		</div>
+	</div>
+</li>

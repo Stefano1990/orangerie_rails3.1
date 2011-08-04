@@ -1,0 +1,36 @@
+<%= render 'posts/new' %>
+<ol class="posts">
+	<% @stream.each do |item| %>
+		<% if item.class.to_s == "Post" %>
+			<%= render item %>
+		<% end %>
+		<% if item.class.to_s == "Invite" %>
+			<%= render item %>
+		<% end %>
+	<% end %>
+</ol>
+
+<a href="#" data-offset="<%= @offset %>" data-user_id="<%= current_user.id %>" id="load_more">Load more...</a>
+
+<% unless Connection.connected?(@user, current_user) or current_user?(@user) %>
+	<p><small>You have to be friends to write on somebody's wall</small></p>
+<% end %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow feature
+		$('#post_body').autogrow();
+		// word and letter counter
+		var post_options = {
+			maxCharacterSize: 600,
+			displayFormat: ''
+		}
+		$('#post_body').textareaCount(post_options);
+		// hide comments
+		$('ul.postComments').hide();
+		
+		// hide the submit button and enable submitting by pressing enter.
+		$('.formtastic.comment input.create').hide();
+		
+		
+	});
+</script>

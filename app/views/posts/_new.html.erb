@@ -1,0 +1,18 @@
+<div>
+	<% if is_friend?(@user) or current_user?(@user)%>
+		<% if current_user.trusted %>
+			<%= current_user?(@user) ? "Whats on your mind?" : "Write something:" %>
+			<%= semantic_form_for(@user.posts.new, :html => {:method => :post, :remote => true} ) do |f| %>
+				<%= f.inputs do %>
+					<%= f.input :body, :label => false,  :required => false %>
+					<%= f.input :wall_id, :as => :hidden, :value => @user.id %>
+				<% end %>
+				<%= f.buttons do %>
+					<%= f.commit_button 'Submit' %>
+				<% end %>
+			<% end %>
+		<% else %>
+			You have to be trusted to write on walls.
+		<% end %>
+	<% end %>
+</div>

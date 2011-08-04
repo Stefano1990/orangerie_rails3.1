@@ -1,0 +1,32 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.photos {
+  	// Add the users class to your body tag
+	// Then, place scoped styles here.
+	$border-color: #700000;
+	$big-padding: 10px;
+	$small-padding: 5px;
+	#left-box {
+		width: 200px;
+		margin: 0 $big-padding $big-padding 0;
+		padding: 0 $big-padding $big-padding 0;
+		border-right: 1px dotted $border-color;
+		float: left;
+	}
+	#middle-box {
+		width: 435px;
+		margin: 0;
+		padding: 0;
+		float: left;
+	}
+ 	#navigation {
+		padding-bottom: $small-padding !important;
+		margin-bottom: $big-padding !important;
+		border-bottom: 1px dotted $border-color;
+		li {
+			display: inline;
+			margin-right: $big-padding;
+		}
+	}
+}

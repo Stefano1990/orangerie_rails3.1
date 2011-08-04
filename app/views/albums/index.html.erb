@@ -1,0 +1,20 @@
+<div class="userContentTitle timeAgo">
+	<% if current_user?(@user) %>
+		<%= t('users.albums.your_albums', :count => count(@user)) %>
+	<% else %>
+		<%= t('users.albums.his_albums', :count => count(@user), :user_name => @user.name ) %>
+	<% end %>
+</div>	
+<table border="0" cellspacing="0" cellpadding="0">
+	<tbody>
+		<% i = 0 %>
+		<% number_of_rows.times do %>
+		<tr>
+			<td class="albumThumb"><%= album_thumb(:i => i) %></td>
+			<td class="albumThumb"><%= album_thumb(:i => i+1) %></td>
+			<td class="albumThumb"><%= album_thumb(:i => i+2) %></td>
+		</tr>
+		<% i = i+3 %>
+		<% end %>
+	</tbody>
+</table>

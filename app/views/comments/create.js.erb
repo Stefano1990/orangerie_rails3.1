@@ -1,0 +1,10 @@
+<% flash.delete(:success) %>
+$("#new_comment")[0].reset();
+$('.comments_list[data-id=<%= @commentable.id %>]').append('<%=j render @comment %>');
+$('.button_to').submitWithAjax();
+
+<% @users_to_notify.each do |user| %>
+	<% notify "/users/notifications/#{user.id}" do %>
+		<%= render 'notifications/show_notification', :item => @comment %>
+	<% end %>
+<% end %>

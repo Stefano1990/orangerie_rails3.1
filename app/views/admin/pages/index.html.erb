@@ -1,0 +1,31 @@
+<p>Pages:</p>
+<table id="categories">
+	<tr>
+		<td>Category</td>
+		<td>Page title</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<% @pages.each do |page| %>
+		<tr>
+			<td><%= page.category.name unless page.category.nil? %></td>
+			<td><%= link_to page.title, admin_page_path(page) %></td>
+			<td><%= link_to "Edit", edit_admin_page_path(page) %></td>
+			<td><%= button_to "Delete page", admin_page_path(page), :method => :delete, 
+																:class => "destroy",
+					          									:id => "destroy_link" %></td>
+		</tr>
+	<% end %>
+</table>
+<%= link_to "{ make a new page }", new_admin_page_path %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#destroy_link").click(function() {
+			if (confirm('Are you sure?')) {
+				
+			}else{
+				return false;
+			}
+		});
+	});
+</script>

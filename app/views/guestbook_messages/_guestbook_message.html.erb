@@ -1,0 +1,26 @@
+<li>
+	<div class="message">
+		<div class="message_user_image">
+			<%= image_tag('stock/2.png', :width => "200px") %>
+			<small>Written at: <%= guestbook_message.created_at.strftime("%H:%m, %d.%M.%y") %><br/>
+				by <%= user_link(:user => guestbook_message.user) %></small>
+		</div>
+		<div class="message_body">
+			<h4><%= guestbook_message.title %></h4>
+			<%= simple_format guestbook_message.body %>
+		</div>
+	</div>
+	<div class="answer">
+		<% if guestbook_message.has_answer? %>
+			<div class="message_user_image">
+				<%= image_tag('stock/2.png', :width => "200px") %>
+				<small>Written at: <%= guestbook_message.created_at.strftime("%H:%m, %d.%M.%y") %><br/>
+					by <%= user_link(:user => guestbook_message.admin) %></small>
+			</div>
+			<div class="message_answer">
+				<h4>TODO: Add title to guestbook_message</h4>
+				<%= simple_format guestbook_message.answer_body %>
+			</div>
+		<% end %>
+	</div>
+</li>

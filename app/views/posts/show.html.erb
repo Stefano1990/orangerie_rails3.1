@@ -1,0 +1,26 @@
+<ol class="posts">
+	<li class="post" data-id="<%= @post.id %>">
+		<div class="post_user_picture">
+			<%= user_avatar :user => @post.user, :size => :small, :resize => "50px" %>
+		</div>
+		<div class="post_body">
+			<%= link_to @post.user.name, @post.user %><br/>
+			<%= simple_format @post.body %>
+			<span class="timeAgo"><%= distance_of_time_in_words_to_now(@post.created_at) %> ago</span> &middot; 
+			<a data-id="<%= @post.id %>" title="<%= I18n.t("users.comments.title") %>" class="showComments">
+				<%= I18n.t("users.comments.show", :count => @post.comments.count ) %>
+			</a>
+			&middot;
+			<% semantic_form_for(Flag.new, :html => {:method => :post}) do |f| %>
+				<%= f.input :flaggable_type, :as => :hidden, :value => @post.class %>
+				<%= f.input :flaggable_id, :as => :hidden, :value => @post.id %>
+				<%= f.input :user_id, :label => false, :as => :hidden, :value => current_user.id %>
+				<%= f.commit_button t("users.report.text") %>
+			<% end %>
+			<div class="comments" data-commentable_id="<%= @post.id %>">
+				<%= render "comments/comments", :commentable => @post %>
+				<%= render "comments/form", :commentable => @post %>
+			</div>
+		</div>
+	</li>
+</ol>

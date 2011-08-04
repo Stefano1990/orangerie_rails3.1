@@ -1,0 +1,40 @@
+// Styles for the user wall are in this file.
+// They will automatically be included in application.css.
+// Notice the controller: users, action: show
+
+$text_align: inherit; // variable for experimentation
+@import 'base';
+body.users.wall, body.users.livestream {
+	.posts {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		text-align: $text_align;
+		.post {
+			padding: 0;
+			margin: 0 0 5px 0;
+			width: 100%;
+			overflow: hidden;
+			border-bottom: 1px dotted $border_color;
+			
+			.post_body {
+				padding: 0;
+				margin: 0;
+				display: block;
+				float: left;
+				width: 375px;
+			}
+			.post_user_picture {
+				margin: 5px;
+				padding: 0;
+				width: 50px;
+				float: left;
+			}
+			.comments {
+				display: none;
+				overflow: auto;
+				width: 100%;
+			}
+		}
+	}
+}

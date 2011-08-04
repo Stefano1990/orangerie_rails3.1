@@ -1,0 +1,13 @@
+<% unless @stream.blank? %>
+	<% @stream.each do |post|%>
+	<% if post.class.to_s == "Activity" %>
+	 	<% livestream_message(post) %>
+	<% else %>
+	<%= render @posts %>
+	<% end %>
+<% end %>
+	
+	
+<% else %>
+	No wall posts yet.
+<% end %>

@@ -1,0 +1,25 @@
+<%= semantic_form_for(@album, :url => user_albums_path(@user), :html => {:method => :post} ) do |f| %>
+	<%= f.inputs do %>
+		Title:
+		<div id="wrap" class="messageSubject">
+			<%= f.input :title, :label => false %>
+		</div>
+		Description:
+		<div id="wrap" class="messageSubject">
+			<%= f.input :description, :label => false %>
+		</div>
+		<%= f.commit_button 'Senden' %>
+	<% end %>
+<% end %>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow feature
+		$('#album_description').autogrow();
+		// word and letter counter
+		var post_options = {
+			maxCharacterSize: 600,
+			displayFormat: ''
+		}
+		$('#album_description').textareaCount(post_options);
+	});
+</script>

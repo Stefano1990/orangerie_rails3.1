@@ -1,0 +1,4 @@
+<% @stream.each do |item| %>
+	$(".posts").append('<%=j render item %>');
+<% end %>
+$("#load_more").text("Load more...");

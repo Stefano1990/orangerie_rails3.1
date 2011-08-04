@@ -1,0 +1,39 @@
+fieldset { overflow: hidden !important; }
+#new_reservation {
+	margin: 0.7em 0 0.7em 0;
+	padding: 0.7em 0 0.7em 0;
+	border-top: 1px dotted #700000;
+	border-bottom: 1px dotted #700000;
+}
+input { 
+	border: 1px solid #700000 !important;
+	width: 20% !important;
+	padding: 5px !important;
+	background: none !important;
+	background-color: rgba(120,0,0,0.15);
+}
+li.commit input {
+	width: auto !important;
+	color: #fffcd2;
+	font-style: italic;
+}
+fieldset.buttons ol {
+	float: right;
+}
+textarea {
+	border: 1px solid #700000 !important;
+	height: 40px;
+	width: 72.5% !important;
+	padding: 5px !important;
+	background-color: rgba(120,0,0,0.15);
+}
+#reservation_guests_female_input, #reservation_guests_male_input {
+	float: left;
+	width: 50%;
+}
+#reservation_guests_female_input label {
+	width: 165px;
+}
+#reservation_remarks_input {
+	clear: both;
+}

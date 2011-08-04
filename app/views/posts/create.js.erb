@@ -1,0 +1,18 @@
+<% flash.delete(:success) %>
+if($('div.success').length == 0 ){
+	$('#middle-box').prepend("<div class=\"success\">Post created.</div>");
+	$('div.success').delay(30000).slideUp(function(){
+		$(this).remove();
+	});
+}
+$("ol.posts").prepend("<%=j render @post %>");
+// reset the size of the post field and reset the form
+$("#post_body").css("height", "48px");
+$("#post_body").val('');
+$('.button_to').first().submitWithAjax();
+
+<% unless @user_to_notify.nil? %>
+	<% notify "/users/notifications/#{@user_to_notify.id}" do %>
+		<%= render 'notifications/show_notification', :item => @post %>
+	<% end %>
+<% end %>

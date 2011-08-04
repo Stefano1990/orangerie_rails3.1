@@ -1,0 +1,17 @@
+<% if commentable.class.to_s == "Event" or (Connection.connected?(@user, current_user) or current_user?(@user)) %>
+	<div class="new-comment" data-id="<%= commentable.id %>">
+		<div class="comment_user_picture">
+			<%= user_avatar :user => current_user, :size => :small, :resize => "32px" %>
+		</div>
+		<%= semantic_form_for([commentable, Comment.new], :html => {:method => :post, :remote => true}) do |f| %>
+		<%= f.inputs do %>
+			<%= f.input :commentable_id, :as => :hidden, :value => commentable.id %>
+			<%= f.input :body, :label => false, :required => false %>
+		<% end %>
+		<%= f.buttons do %>
+			<%= f.commit_button 'Submit' %>
+		<% end %>
+		<span class="small">Press Ctrl+Enter to create a new comment.</span>
+		<% end %>
+	</div>
+<% end %>

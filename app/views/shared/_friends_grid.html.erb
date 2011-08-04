@@ -1,0 +1,5 @@
+<ul class="noDeco friendsGrid">
+	<% @user.contacts.each do |contact| %>
+		<li><%= friendsGrid(:user => contact) %></li>
+	<% end %>
+</ul>

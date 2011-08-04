@@ -1,0 +1,81 @@
+// Place all the styles related to the GuestbookMessages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'base';
+$answer_font_color: #F9CF88;
+
+body.guestbook_messages.index {
+  	// Add the guestbookmessages class to your body tag
+  	// Then, place scoped styles here.
+	form.formtastic textarea {
+		height: 200px;
+	}
+	#guestbook_message_form {
+		border-bottom: 1px dotted $border-color;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+	}
+	#message_list {
+		margin: 0;
+		padding: 0;
+		ol, li {
+			list-style-type: none;
+			overflow: hidden;
+			height: 100%;
+			width: 100%;
+		}
+		li {
+			margin-bottom: 10px;
+			padding-bottom: 10px;
+			border-bottom: 1px dotted $border-color;
+		}
+		.message_user_image {
+			float: left;
+			margin: 0 10px 0 0;
+			width: 200px;
+			text-align: left;
+		}
+		.message_body {
+			vertical-align: top;
+			float: left;
+			height: 100%;
+			width: 445px;
+			padding-bottom: 10px;
+		}
+		.message_answer {
+			color: $answer_font_color;
+		}
+		.message, .answer {
+			overflow: hidden;
+			display: block;
+		}
+		.message {
+			margin-bottom: 5px;
+		}
+	}
+	
+	.link_as_button {
+		// the big button in the middle to make a new entry.
+		// TODO: expand this into a proper button class, so it can be reused on other pages
+		display: inline-block;
+		width: auto;
+		height: 50px;
+		margin: 20px auto 20px auto;
+		background-color: #700000;
+		border-radius: 10px;
+		border: 2px solid #800000;
+		
+		a {
+			width: auto;
+			padding-left: 10px;
+			padding-right: 10px;
+			display: block;
+			text-align: center;
+			line-height: 50px;
+		}
+		&:hover {
+			background-color: #670002;
+			border: 2px solid #8F0002;
+		}
+	}
+}

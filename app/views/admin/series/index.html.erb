@@ -1,0 +1,30 @@
+<% content_for :sub_page_navi do %>
+	<ul class="noDeco profileNavigation">
+		<li><%= link_to "Back to events", admin_events_path %></li>
+		<li><%= link_to "New event series", new_admin_series_path %></li>
+	</ul>
+<% end %>
+<h2>Event series</h2>
+<table id="categories">
+	<tr>
+		<td># of events</td>
+		<td>Name</td>
+		<td>Delete</td>
+	</tr>
+	<%= render :partial => "list", :locals => { :series => @series} %>
+</table>
+<h2>New event series</h2>
+<%= semantic_form_for ([:admin, Series.new]) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :name, :label => 'Name' %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+	$('.button_to').submitWithAjax();
+	});
+</script>

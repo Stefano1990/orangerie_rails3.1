@@ -1,0 +1,24 @@
+<%= semantic_form_for ([:admin, @page]) do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :title, :label => 'page title' %>
+		<%= f.input :content, :label => 'Content' %>
+		<%= f.input :is_commentable, :label => 'Comments?' %>
+		<%= f.input :category, :label => "Category", :include_blank => false %>
+		<%= f.input :lang, :as => :select, :collection => {"Englisch" => "en", "Deutsch" => "de"}, :include_blank => false  %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+<% end %>
+<h3><%= link_to "Show all comments", admin_comments_path(:commentable_type => @page.class.to_s, :commentable_id => @page.id) %></h3>
+<h3><%= link_to "Upload new photo", new_admin_page_page_photo_path(@page) %></h3>
+<h3>Photos on this page:</h3>
+<% @page.page_photos.limit(2).each do |photo| %>
+	<%= image_tag(photo.image)%>
+<% end %>
+<h3><%= link_to "Show all photos", admin_page_page_photos_path(@page) %></h3>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#page_content").autogrow();
+	});
+</script>

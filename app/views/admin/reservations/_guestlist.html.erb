@@ -1,0 +1,28 @@
+<h3>Guests break-down:</h3>
+<table id="categories">
+	<tr>
+		<td>Female guests</td>
+		<td>Male guests</td>
+		<td>Couples</td>
+		<td>Total guests</td>
+	</tr>
+	<tr>
+		<td><%= @event.total_females %></td>
+		<td><%= @event.total_males %></td>
+		<td><%= @event.couples %></td>
+		<td><%= @event.total_guests %></td>
+	</tr>
+</table>
+<h3>Guestlist for <%= @event.title %></h3>
+<table id="categories">
+	<tr>
+		<td>#</td>
+		<td>User</td>
+		<td>Sex</td>
+		<td>Male guests</td>
+		<td>Female guests</td>
+		<td>Remarks</td>
+		<td>Time of reservation</td>
+	</tr>
+	<%= render @reservations %>
+</table>

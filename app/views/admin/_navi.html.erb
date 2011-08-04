@@ -1,0 +1,6 @@
+<h2>Willkommen im Admin center: <%= current_user.name %></h2>
+<ul class="noDeco profileNavigation">
+	<li><%= link_to "Navigation", admin_categories_path %></li>
+	<li><%= link_to "Pages", admin_pages_path %></li>
+	<li><%= link_to "Events", admin_events_path %></li>
+</ul>

@@ -1,0 +1,133 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'base';
+
+body.events {
+  	// Add the events class to your body tag
+  	// Then, place scoped styles here.
+
+	fieldset { overflow: hidden !important; }
+	#new_reservation {
+		margin: 0.7em 0 0.7em 0;
+		padding: 0.7em 0 0.7em 0;
+		border-top: 1px dotted #700000;
+		border-bottom: 1px dotted #700000;
+		
+		input { 
+			border: 1px solid #700000 !important;
+			width: 20% !important;
+			padding: 5px !important;
+			background: none !important;
+			background-color: rgba(120,0,0,0.15);
+		}
+		li.commit input {
+			width: auto !important;
+			color: #fffcd2;
+			font-style: italic;
+		}
+		fieldset.buttons ol {
+			float: right;
+		}
+		textarea {
+			border: 1px solid #700000 !important;
+			height: 40px;
+			width: 72.5% !important;
+			padding: 5px !important;
+			background-color: rgba(81,2,0,0.4);
+		}
+		#reservation_guests_female_input, #reservation_guests_male_input {
+			float: left;
+			width: 50%;
+		}
+		#reservation_guests_female_input label {
+			width: 165px;
+		}
+		#reservation_remarks_input {
+			clear: both;
+		}
+	}
+}
+body.events {
+	// these styles are only shown in the index action.
+	// I did this so i can re-use stuff like event_title as class name, etc.
+	ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li.event_title {
+			border-bottom: 1px dotted $border_color;
+			margin: 0 0 5px 0;
+		}
+		li.short_description {
+			overflow: hidden;
+			img {
+				float: left;
+				padding: 5px 5px 5px 0;
+			}
+			border-bottom: 1px dotted $border_color;
+			margin: 0 0 5px 0;
+		}
+	}
+}
+body.events.show {
+	/* jqModal base Styling courtesy of;
+	  Brice Burgess <bhb@iceburg.net> */
+
+	/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+	  the Window's z-index value will be set to 3000 by default (in jqModal.js). You
+	  can change this value by either;
+	    a) supplying one via CSS
+	    b) passing the "zIndex" parameter. E.g.  (window).jqm({zIndex: 500}); */
+
+	.jqmWindow {
+	    display: none;
+
+	    position: fixed;
+	    top: 17%;
+	    left: 50%;
+
+	    margin-left: -300px;
+	    width: 600px;
+
+	    background-color: black;
+		background-border: 5px solid ;
+		border-radius: 15px;
+	    color: #333;
+	    border: 1px solid black;
+	    padding: 12px;
+	}
+
+	.jqmOverlay { background-color: #000; }
+	* html .jqmWindow {
+	     position: absolute;
+	     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+	}
+	#list_scroller {
+		height: 500px;
+		overflow: scroll;
+		overflow-x: hidden;
+	}
+	.friends_list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-o-user-select: none;
+		user-select: none;
+		
+		.select_friend {
+			overflow: hidden;
+		}
+		.friend {
+			height: 50px;
+			margin-bottom: 5px;
+			img {
+				vertical-align: middle;
+				margin-right: 10px;
+			}
+		}
+	}
+}

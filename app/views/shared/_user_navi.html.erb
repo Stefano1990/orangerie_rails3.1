@@ -1,0 +1,23 @@
+<% @user = current_user if @user.nil? %>
+<ul id="navigation" class="noDeco ">
+	<% if current_user?(@user) %>
+		<li><%= link_to "Livestream", livestream_user_path(@user) %></li>
+	<% end %>	
+	<li><%= link_to I18n.t('users.navigation.wall'), wall_user_path(@user) %></li>
+	<li><%= link_to I18n.t('users.navigation.infos'), infos_user_path(@user) %></li>
+	<li><%= link_to I18n.t('users.navigation.friends'), friends_user_path(@user) %></li>
+	<li><%= link_to I18n.t('users.navigation.photos'), user_albums_path(@user) %></li>
+	
+	<% if current_user?(@user) %>
+		<li><%= link_to I18n.t('users.navigation.messages'), messages_path %></li>
+	<% end %>
+	<% if current_user?(@user) and params[:controller] == "messages" %>
+		<li style="float: right"><%= link_to I18n.t('users.messages.navigation.trash'), trash_messages_path %></li>
+		<li style="float: right"><%= link_to I18n.t('users.messages.navigation.sent'), sent_messages_path %></li>
+		<li style="float: right"><%= link_to I18n.t('users.messages.navigation.inbox'), messages_path %></li>
+	<% end %>
+	<% if current_user?(@user) and ["photos", "albums"].include?(params[:controller]) %>
+		<li style="float: right"><%= link_to I18n.t('users.navigation.new_album'), new_user_album_path(current_user) %></li>
+		<li style="float: right"><%= link_to I18n.t('users.navigation.upload_photo'), new_user_photo_path(current_user) %></li>
+	<% end %>
+</ul>

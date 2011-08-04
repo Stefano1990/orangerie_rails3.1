@@ -1,0 +1,84 @@
+<% count = count(@user) %>
+<%= semantic_form_for(@user, :html => {:method => :put, :id => "editUser"}) do |g| %>
+	<%= g.inputs :name => "", :for => :infos do |f|%>
+		<%= f.inputs :id => "common" do %>
+	      	<%= f.input :sex, :as => :select, :collection => [t('general.sex.couple').capitalize, t('general.sex.male').capitalize, t('general.sex.female').capitalize], 
+													  :include_blank => false %>
+			<%= f.input :about_us, :label => t('users.infos.about_us', :count => count) %>
+			<%= f.input :looking_for, :label => t('users.infos.looking_for', :count => count) %>
+			<%= f.input :region, :label => t('users.infos.region', :count => count) %>
+			<%= f.input :like, :label => t('users.infos.like', :count => count) %>
+			<%= f.input :dislike, :label => t('users.infos.dislike', :count => count) %>
+			<%= f.input :to_do, :label => t('users.infos.to_do', :count => count) %>
+			<%= f.input :mobility, :label => t('users.infos.mobility', :count => count) %>
+			<div class="genderInfos" data-sex="female">
+				<li class="text optional infosLabel">
+					Our girl
+				</li>
+				<%= f.input :age_f, :label => t('users.infos.age') %>
+				<%= f.input :weight_f, :label => t('users.infos.weight')%>
+				<%= f.input :hair_color_f, :label => t('users.infos.hair_color') %>
+				<%= f.input :bi_tendency_f, :label => t('users.infos.bi_tendency') %>
+				<%= f.input :sex_tend_f, :label => t('users.infos.sex_tend')%>
+				<%= f.input :smoking_f, :label => t('users.infos.smoking'), :as => :select, :include_blank => false %>
+				<%= f.input :eye_color_f, :label => t('users.infos.eye_color') %>
+			</div>
+			<div class="genderInfos" data-sex="male">
+				<li class="text optional infosLabel">
+					Our boy
+				</li>
+				<%= f.input :age_m, :label => t('users.infos.age') %>
+				<%= f.input :weight_m, :label => t('users.infos.weight') %>
+				<%= f.input :hair_color_m, :label => t('users.infos.hair_color') %>
+				<%= f.input :bi_tendency_m, :label => t('users.infos.bi_tendency') %>
+				<%= f.input :sex_tend_m, :label => t('users.infos.sex_tend') %>
+				<%= f.input :smoking_m, :label => t('users.infos.smoking'), :as => :select, :include_blank => false %>
+				<%= f.input :eye_color_m, :label => t('users.infos.eye_color') %>
+			</div>
+			
+	    <% end %>
+		<%= f.commit_button 'Submit' %>
+	<% end %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		// autogrow features for the textareas
+		$('#user_infos_attributes_about_us').autogrow();
+		$('#user_infos_attributes_looking_for').autogrow();
+		$('#user_infos_attributes_dislike').autogrow();
+		$('#user_infos_attributes_like').autogrow();
+		$('#user_infos_attributes_to_do').autogrow();
+		
+		
+		// javascript to show/hide the forms depending on gender.
+		// the ruby in in place so that the system works for different localizations.
+	
+		
+		
+	       $("#user_infos_attributes_sex").change(function(){
+
+			if ($(this).val() == "<%= t('general.sex.female').capitalize %>") {
+				$('.genderInfos[data-sex="female"]').show();
+				return false;
+	
+			}else{
+				$('.genderInfos[data-sex="female"]').hide();
+			}
+			if ($(this).val() == "<%= t('general.sex.male').capitalize %>") { 
+				$('.genderInfos[data-sex="male"]').show();
+				return false;
+			}else{
+				$('.genderInfos[data-sex="male"]').hide();
+			}
+			if ($(this).val() == "<%= t('general.sex.couple').capitalize %>") {
+				$('.genderInfos[data-sex="female"]').show(); 
+				$('.genderInfos[data-sex="male"]').show();
+				return false;
+				
+			}		
+	      });
+
+	    });
+	
+</script>
